@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
-class Main{
-  private static _instance: Main;
+class ClientData {
+  private static _instance: ClientData;
   public formStatus: string;
   private constructor() {
     makeAutoObservable(this);
@@ -9,11 +9,11 @@ class Main{
   }
 
   public static getInstance(){
-    if(Main._instance == null){
-      Main._instance = new Main();
+    if(ClientData._instance == null){
+      ClientData._instance = new ClientData();
     }
-    return Main._instance;
+    return ClientData._instance;
   }
 }
 
-export default Main
+export default ClientData

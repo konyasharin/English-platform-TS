@@ -1,20 +1,20 @@
 import Btn from "../Btns/Btn";
 import "./Entry.css"
 import {editForm} from "../Auth/OpenAuth";
-import Main from "../store/main";
+import ClientData from "../store/clientData";
 
 function ChooseEntry(){
   return(
     <div className="container choose-entry">
       <Btn text={"Регистрация"} backgroundColor={"#4D4DFF"} color={"#ffffff"}
            onClick={() => {
-             Main.getInstance().formStatus = "registration"
+             ClientData.getInstance().formStatus = "registration"
              editForm()
            }}/>
       <Btn text={"Вход"} backgroundColor={"#4D4DFF"}
            color={"#ffffff"}
            onClick={() => {
-             Main.getInstance().formStatus = "entry"
+             ClientData.getInstance().formStatus = "entry"
              editForm()
            }}/>
     </div>

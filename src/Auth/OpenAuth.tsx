@@ -2,11 +2,11 @@ import ChooseEntry from "../Entry/ChooseEntry";
 import BlackBg from "../Form/BlackBg";
 import Registration from "../Entry/Registration";
 import Entry from "../Entry/Entry";
-import Main from "../store/main";
+import ClientData from "../store/clientData";
 import {observer} from "mobx-react-lite";
 
 export function editForm() {
-  switch (Main.getInstance().formStatus) {
+  switch (ClientData.getInstance().formStatus) {
     case "choose":
       return ChooseEntry
     case "registration":

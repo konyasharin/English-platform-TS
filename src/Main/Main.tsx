@@ -1,7 +1,7 @@
 import "./Main.css"
 import MainBtn from "../Btns/MainBtn";
 import LastModules from "./LastModules/LastModules";
-function Main(props){
+function Main(){
   return (
     <main>
       <img id="elephant" src="main/elephant.png" alt="elephant"/>

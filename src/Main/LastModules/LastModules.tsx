@@ -1,6 +1,6 @@
 import "./LastModules.css"
 import Block from "./Block";
-function LastModules(props){
+function LastModules(){
   return (
     <section className="last-modules container">
       <img src="main/abc.png" alt="abc" className="wow flipInY"/>
