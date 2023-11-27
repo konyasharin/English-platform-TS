@@ -1,0 +1,18 @@
+footer{
+    margin-top: 150px;
+    position: relative;
+    height: 130px;
+    color: #ffffff;
+
+}
+footer img{
+    width: calc(1140px + 20px + (100vw - 1140px) / 2);
+    position: absolute;
+    right: 0;
+    height: 100%;
+    z-index: -1;
+}
+footer .container{
+    position: relative;
+    top: 50px;
+}

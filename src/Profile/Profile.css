@@ -1,0 +1,17 @@
+.profile{
+    display: flex;
+    margin-top: 90px;
+}
+
+.profile img{
+    width: 364px;
+    height: 364px;
+    border-radius: 50%;
+    margin-right: 22px;
+    cursor: pointer;
+}
+
+.profile input{
+    margin-bottom: 20px;
+    margin-right: auto;
+}

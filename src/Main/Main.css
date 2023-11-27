@@ -1,0 +1,14 @@
+#elephant{
+    position: absolute;
+    right: 0;
+    z-index: -1;
+    top: 20px;
+    height: 582px;
+    width: calc(1140px - 420px + (100vw - 1140px) / 2);
+    object-fit: cover;
+    object-position: left;
+}
+
+h1{
+    margin-top: 90px;
+}

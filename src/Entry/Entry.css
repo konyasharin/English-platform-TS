@@ -1,0 +1,10 @@
+.choose-entry{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 300px;
+}
+
+.choose-entry button{
+    margin-bottom: 20px;
+}

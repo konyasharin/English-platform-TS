@@ -1,0 +1,28 @@
+.last-modules{
+    margin-top: 180px;
+    position: relative;
+}
+
+.last-modules img{
+    top: -120px;
+    position: absolute;
+    rotate: -30deg;
+}
+
+.last-modules h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.block{
+    background-color: #D9D9D9;
+    border-radius: 8px;
+    width: 367px;
+    height: 206px;
+}
+.blocks{
+    display: flex;
+    justify-content: space-between;
+}
+
+
