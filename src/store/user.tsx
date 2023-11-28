@@ -6,7 +6,7 @@ class User{
 
     private constructor() {
         makeAutoObservable(this);
-        this._login = "1";
+        this._login = "";
     }
 
     public static getInstance(){
