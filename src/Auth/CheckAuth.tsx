@@ -1,7 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import User from "../store/user";
-import ClientData from "../store/clientData";
+import FormsStore from "../store/formsStore"
+import {FormNames} from "../initializeForms";
 
 const CheckAuth = () => {
   const user: User = User.getInstance()
@@ -10,7 +11,7 @@ const CheckAuth = () => {
     if(user.login === ""){
       // @ts-ignore
       document.querySelector(".bg-black").classList.remove("bg-black_disable")
-      ClientData.getInstance().formStatus = "choose"
+      FormsStore.getInstance().changeStatus(FormNames.CHOOSE)
       navigate("/")
     }
   })

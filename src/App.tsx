@@ -1,4 +1,3 @@
-import React, {useState} from 'react';
 import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Refer from "./Header/Refer";
@@ -11,9 +10,12 @@ import Folders from "./FoldersAndModules/Folders";
 import Modules from "./FoldersAndModules/Modules";
 import Profile from "./Profile/Profile";
 import "./Header/Header.css"
+import FormsStore from "./store/formsStore";
+import initializeForms from "./initializeForms";
 
+
+initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
 function App() {
-  const [formStatus, setFormStatus] = useState("choose")
   return (
       <BrowserRouter>
         <div className="App">

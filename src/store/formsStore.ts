@@ -1,21 +1,22 @@
-import {makeAutoObservable} from "mobx";
 import Form from "./form";
+import {makeAutoObservable} from "mobx";
 
-class ClientData {
-  private static _instance: ClientData;
-  public formStatus: string;
-  private readonly _forms: Array<Form>
+class FormsStore{
+  private readonly _forms: Form[]
+  private _formStatus: string;
+  private static _instance: FormsStore
+
   private constructor() {
     makeAutoObservable(this);
-    this.formStatus = "";
     this._forms = []
+    this._formStatus = "";
   }
 
   public static getInstance(){
-    if(ClientData._instance == null){
-      ClientData._instance = new ClientData();
+    if(FormsStore._instance == null){
+      FormsStore._instance = new FormsStore();
     }
-    return ClientData._instance;
+    return FormsStore._instance;
   }
 
   public addForm(nameForm: string){
@@ -32,9 +33,13 @@ class ClientData {
     }
   }
 
-  public updateInput(formName: string, inputName: string, newText: string){
-    this.getForm(formName)!.getInput(inputName)!.text = newText
+  public changeStatus(newStatus: string){
+    this._formStatus = newStatus
+  }
+
+  public get formStatus(){
+    return this._formStatus
   }
 }
 
-export default ClientData
+export default FormsStore

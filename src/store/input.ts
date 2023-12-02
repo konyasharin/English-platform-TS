@@ -6,13 +6,14 @@ class Input{
   public placeholder: string
 
   public constructor(name: string, text: string, placeholder: string) {
+    makeAutoObservable(this)
     this.name = name
     this.text = text
     this.placeholder = placeholder
   }
 
   public onChange(value: string){
-    this.text = this.text + value
+    this.text = value
   }
 }
 
