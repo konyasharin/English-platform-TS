@@ -15,6 +15,10 @@ class Input{
   public onChange(value: string){
     this.text = value
   }
+
+  public clone(){ // Prototype
+    return new Input(this.name, this.text, this.placeholder)
+  }
 }
 
 export default Input

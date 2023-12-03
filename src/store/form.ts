@@ -1,20 +1,26 @@
 import Input from "./input";
+import {makeAutoObservable} from "mobx";
 
 class Form{
   private readonly _inputs: Array<Input>
   private readonly _nameForm: string
 
   public constructor(name: string) {
+    makeAutoObservable(this)
     this._inputs = []
     this._nameForm = name
   }
-  public addInput(nameInput: string, text: string, placeholder: string) {
-    this._inputs.push(new Input(nameInput, text, placeholder))
+  public addInput(input: Input) {
+    this._inputs.push(input)
     return this._inputs[this._inputs.length - 1]
   }
 
   public get nameForm(){
     return this._nameForm
+  }
+
+  public getAllInputs(){
+    return this._inputs
   }
 
   public getInput(nameInput: string): Input | undefined{

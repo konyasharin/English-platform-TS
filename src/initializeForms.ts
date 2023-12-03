@@ -1,4 +1,5 @@
 import FormsStore from "./store/formsStore";
+import Input from "./store/input";
 
 export enum InputNames{
   LOGIN = "LOGIN",
@@ -15,14 +16,14 @@ export enum FormNames{
 function initializeForms(formStore: FormsStore){
   const registrationForm = formStore.addForm(FormNames.REGISTRATION)
 
-  registrationForm.addInput(InputNames.LOGIN, "", "Ваш логин")
-  registrationForm.addInput(InputNames.PASSWORD, "", "Ваш пароль")
-  registrationForm.addInput(InputNames.REPEAT_PASSWORD, "", "Повторите пароль")
+  registrationForm.addInput(new Input(InputNames.LOGIN, "", "Ваш логин"))
+  registrationForm.addInput(new Input(InputNames.PASSWORD, "", "Ваш пароль"))
+  registrationForm.addInput(new Input(InputNames.REPEAT_PASSWORD, "", "Повторите пароль"))
 
   const entryForm = formStore.addForm(FormNames.ENTRY)
 
-  entryForm.addInput(InputNames.LOGIN, "", "Ваш логин")
-  entryForm.addInput(InputNames.PASSWORD, "", "Ваш пароль")
+  entryForm.addInput(new Input(InputNames.LOGIN, "", "Ваш логин"))
+  entryForm.addInput(new Input(InputNames.PASSWORD, "", "Ваш пароль"))
 }
 
 export default initializeForms

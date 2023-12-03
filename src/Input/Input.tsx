@@ -1,5 +1,4 @@
 import "./Input.css"
-import {observer} from "mobx-react-lite";
 import InputClass from "../store/input";
 import FormsStore from "../store/formsStore";
 

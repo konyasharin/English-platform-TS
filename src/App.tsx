@@ -12,6 +12,7 @@ import Profile from "./Profile/Profile";
 import "./Header/Header.css"
 import FormsStore from "./store/formsStore";
 import initializeForms from "./initializeForms";
+import CreateModule from "./FoldersAndModules/CreateModule/CreateModule";
 
 
 initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
@@ -29,9 +30,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />}/>
             <Route path="/trainings" element={<Trainings />}/>
-            <Route path="/folders" element={<Folders/>}/>
-            <Route path="/modules" element={<Modules/>}/>
+            <Route path="/folders" element={<Folders />}/>
+            <Route path="/modules" element={<Modules />}/>
             <Route path="/profile" element={<Profile img={"/avatar.png"}/>}/>
+            <Route path="/createModule" element={<CreateModule />}></Route>
           </Routes>
           <Footer/>
           <OpenAuth />
