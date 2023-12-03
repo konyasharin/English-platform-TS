@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import dotenv from 'dotenv'
 import checkAuth from "./backend/middleWares/checkAuth.js";
 import * as UserController from "./backend/controllers/UserController.js"
+import cors from "cors"
 
 dotenv.config()
 const app = express()
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 5000
 const CONNECTION_STRING = `mongodb+srv://admin:${encodeURIComponent(process.env.PASSWORD)}@cluster0.r5frqga.mongodb.net/EnglishPlatform?retryWrites=true&w=majority`
 
 app.use(express.json())
+app.use(cors())
 
 mongoose
   .connect(CONNECTION_STRING)

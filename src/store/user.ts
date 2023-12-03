@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 
 class User{
-    private readonly _login: string;
+    private _login: string;
     private static _instance: User;
 
     private constructor() {
@@ -18,6 +18,10 @@ class User{
 
     public get login() {
         return this._login;
+    }
+
+    public set login(login: string){
+        this._login = login
     }
 }
 

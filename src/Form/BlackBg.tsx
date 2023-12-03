@@ -1,10 +1,6 @@
 import "./Form.css"
 import React from "react";
-const closeForm = (event: any) => {
-  if(event.target.classList.contains("bg-black")){
-    event.target.classList.toggle("bg-black_disable")
-  }
-}
+import {closeForm} from "../Auth/CheckAuth";
 
 function BlackBg({ChosenForm}: any){
   return(

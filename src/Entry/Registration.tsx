@@ -3,6 +3,27 @@ import Input from "../Input/Input";
 import {observer} from "mobx-react-lite";
 import FormsStore from "../store/formsStore";
 import {FormNames, InputNames} from "../initializeForms";
+import formsStore from "../store/formsStore";
+import axios from "../axios";
+
+async function endRegistration(login: string, password: string, repeatPassword: string){
+  if (password === repeatPassword){
+    try {
+      await axios.post("auth/registration", {
+        userName: login,
+        password: password
+      }, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+    } catch (error: any){
+      console.log(error.response.data)
+    }
+  } else{
+    console.log("Пароли не совпадают!")
+  }
+}
 
 const Registration = observer(() => {
   const registrationForm = FormsStore.getInstance().getForm(FormNames.REGISTRATION)!
@@ -18,7 +39,11 @@ const Registration = observer(() => {
            edit={registrationForm.getInput(InputNames.REPEAT_PASSWORD)!}/>]
 
   return(
-    <Form inputs={inputsArray} btnText={"Завершить регистрацию"} title={"Регистрация"}/>
+    <Form inputs={inputsArray} btnText={"Завершить регистрацию"} title={"Регистрация"} onClick={() => {
+      endRegistration(formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.LOGIN)!.text,
+        formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.PASSWORD)!.text,
+        formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.REPEAT_PASSWORD)!.text)
+    }}/>
   )
 })
 
