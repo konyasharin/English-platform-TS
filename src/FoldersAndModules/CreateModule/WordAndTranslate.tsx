@@ -1,12 +1,10 @@
 
 
-interface WordAndStateProps{
-  Word: any
-}
-
-function WordAndTranslate({Word}: WordAndStateProps){
+function WordAndTranslate({word}: any){
   return(
-    <Word />
+    <>
+      {word}
+    </>
   )
 }
 

@@ -26,16 +26,17 @@ const CreateModule = observer(() => {
     return <Input placeholder={data.placeholder} value={data.text} edit={data} key={i}/>
   })
 
-  const test = [
-    <WordAndTranslate Word={Input} />
+  const blocks = [
+    <WordAndTranslate word={<Input placeholder={"123"}/>}/>
   ]
+
 
   return (
     <section className="container create-modules">
       <Input placeholder={"Название модуля"} value={""} edit={nameModule}/>
       {inputs}
       ...
-      {test}
+      {blocks}
       <Add className={"module-add"} img={"icons/plus-blue.png"} onClick={() => {addWord(firstWordInput)}}/>
     </section>
   )
