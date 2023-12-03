@@ -4,13 +4,15 @@ import Input from "./store/input";
 export enum InputNames{
   LOGIN = "LOGIN",
   PASSWORD = "PASSWORD",
-  REPEAT_PASSWORD = "REPEAT_PASSWORD"
+  REPEAT_PASSWORD = "REPEAT_PASSWORD",
+  MODULE_NAME = "MODULE_NAME"
 }
 
 export enum FormNames{
   REGISTRATION = "REGISTRATION",
   ENTRY = "ENTRY",
-  CHOOSE = "CHOOSE"
+  CHOOSE = "CHOOSE",
+  CREATE_MODULE = "CREATE_MODULE"
 }
 
 function initializeForms(formStore: FormsStore){
