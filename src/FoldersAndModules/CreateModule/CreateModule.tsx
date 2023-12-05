@@ -30,7 +30,7 @@ const firstTranslateInput = createModuleForm.addInput(
   new ClassInput(`Translate ${Math.ceil(createModuleForm.getAllInputs().length / 2)}`, "", "Перевод")
 )
 
-// const test = createModuleForm.addInput(new InputAutoFill("1--", "", "---"))
+const test = createModuleForm.addInput(new InputAutoFill("1--", "", "---"))
 
 const CreateModule = observer(() => {
   const inputsWithoutModuleName = createModuleForm.getAllInputs().filter(data => data.name !== InputNames.MODULE_NAME)

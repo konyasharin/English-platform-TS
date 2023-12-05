@@ -1,4 +1,4 @@
-import {makeAutoObservable} from "mobx";
+import {action, makeAutoObservable, makeObservable, observable, observe} from "mobx";
 
 class Input{
   public name: string
@@ -6,7 +6,13 @@ class Input{
   public placeholder: string
 
   public constructor(name: string, text: string, placeholder: string) {
-    makeAutoObservable(this)
+    makeObservable(this, {
+      name: observable,
+      text: observable,
+      placeholder: observable,
+      onChange: action,
+      clone: action
+    })
     this.name = name
     this.text = text
     this.placeholder = placeholder

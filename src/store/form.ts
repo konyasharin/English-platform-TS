@@ -14,12 +14,12 @@ class Form{
     this._nameForm = name
   }
   public addInput(input: Input | InputAutoFill) {
-    if (input instanceof Input){
-      this._inputs.push(input)
-      return this._inputs[this._inputs.length - 1]
-    } else{
+    if (input instanceof InputAutoFill){
       this._inputsAutoFill.push(input)
       return this._inputsAutoFill[this._inputsAutoFill.length - 1]
+    } else{
+      this._inputs.push(input)
+      return this._inputs[this._inputs.length - 1]
     }
   }
 

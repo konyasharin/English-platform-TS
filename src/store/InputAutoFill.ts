@@ -1,9 +1,19 @@
 import Input from "./Input";
+import {action, makeObservable, observable, override} from "mobx";
 
 class InputAutoFill extends Input{
   private readonly _autoFills: string[]
   constructor(name: string, text: string, placeholder: string) {
     super(name, text, placeholder);
+    makeObservable(this, {
+      name: override,
+      text: override,
+      placeholder: override,
+      onChange: override,
+      clone: override,
+      addAutoFill: action,
+      chooseFill: action
+    })
     this._autoFills = []
   }
 
