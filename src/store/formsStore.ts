@@ -1,4 +1,4 @@
-import Form from "./form";
+import Form from "./Form";
 import {makeAutoObservable} from "mobx";
 
 class FormsStore{

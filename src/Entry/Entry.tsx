@@ -1,10 +1,10 @@
 import Input from "../Input/Input";
 import Form from "../Form/Form";
-import FormsStore from "../store/formsStore";
+import FormsStore from "../store/FormsStore";
 import {FormNames, InputNames} from "../initializeForms";
 import {observer} from "mobx-react-lite";
 import axios from "../axios";
-import formsStore from "../store/formsStore";
+import formsStore from "../store/FormsStore";
 import {closeForm, tryGetUserData} from "../Auth/CheckAuth";
 
 async function endEntry(login: string, password: string){

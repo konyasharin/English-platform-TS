@@ -1,7 +1,7 @@
 import Btn from "../Btns/Btn";
 import "./Entry.css"
 import {editForm} from "../Auth/OpenAuth";
-import FormsStore from "../store/formsStore";
+import FormsStore from "../store/FormsStore";
 import {FormNames} from "../initializeForms";
 
 function ChooseEntry(){

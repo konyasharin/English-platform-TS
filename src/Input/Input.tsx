@@ -1,6 +1,6 @@
 import "./Input.css"
-import InputClass from "../store/input";
-import FormsStore from "../store/formsStore";
+import InputClass from "../store/Input";
+import FormsStore from "../store/FormsStore";
 
 interface InputProps{
   placeholder?: string,

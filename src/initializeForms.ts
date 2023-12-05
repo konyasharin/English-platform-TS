@@ -1,5 +1,5 @@
-import FormsStore from "./store/formsStore";
-import Input from "./store/input";
+import FormsStore from "./store/FormsStore";
+import Input from "./store/Input";
 
 export enum InputNames{
   LOGIN = "LOGIN",

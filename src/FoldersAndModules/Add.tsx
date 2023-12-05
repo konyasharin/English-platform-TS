@@ -2,7 +2,7 @@ import "./Folders.css"
 interface AddProps{
   className: string,
   img: string,
-  onClick: () => void
+  onClick?: () => void
 }
 function Add({className, img, onClick}: AddProps){
   return(

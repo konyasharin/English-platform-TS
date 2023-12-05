@@ -10,7 +10,7 @@ import Folders from "./FoldersAndModules/Folders";
 import Modules from "./FoldersAndModules/Modules";
 import Profile from "./Profile/Profile";
 import "./Header/Header.css"
-import FormsStore from "./store/formsStore";
+import FormsStore from "./store/FormsStore";
 import initializeForms from "./initializeForms";
 import CreateModule from "./FoldersAndModules/CreateModule/CreateModule";
 

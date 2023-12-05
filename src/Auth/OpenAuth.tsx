@@ -2,7 +2,7 @@ import ChooseEntry from "../Entry/ChooseEntry";
 import BlackBg from "../Form/BlackBg";
 import Registration from "../Entry/Registration";
 import Entry from "../Entry/Entry";
-import FormsStore from "../store/formsStore";
+import FormsStore from "../store/FormsStore";
 import {observer} from "mobx-react-lite";
 import {FormNames} from "../initializeForms";
 

@@ -1,7 +1,7 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
-import User from "../store/user";
-import FormsStore from "../store/formsStore"
+import User from "../store/User";
+import FormsStore from "../store/FormsStore"
 import {FormNames} from "../initializeForms";
 import axios from "../axios";
 

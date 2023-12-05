@@ -2,7 +2,7 @@ import Input from "../Input/Input";
 import MainBtn from "../Btns/MainBtn";
 import "./Profile.css"
 import CheckAuth from "../Auth/CheckAuth";
-import User from "../store/user";
+import User from "../store/User";
 import {observer} from "mobx-react-lite";
 
 const Profile = observer((props: { img: string | undefined; }) =>{

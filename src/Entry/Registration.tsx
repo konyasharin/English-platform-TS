@@ -1,9 +1,9 @@
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 import {observer} from "mobx-react-lite";
-import FormsStore from "../store/formsStore";
+import FormsStore from "../store/FormsStore";
 import {FormNames, InputNames} from "../initializeForms";
-import formsStore from "../store/formsStore";
+import formsStore from "../store/FormsStore";
 import axios from "../axios";
 
 async function endRegistration(login: string, password: string, repeatPassword: string){
