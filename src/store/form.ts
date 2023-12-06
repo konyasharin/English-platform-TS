@@ -13,14 +13,14 @@ class Form{
     this._inputsAutoFill = []
     this._nameForm = name
   }
-  public addInput(input: Input | InputAutoFill) {
-    if (input instanceof InputAutoFill){
-      this._inputsAutoFill.push(input)
-      return this._inputsAutoFill[this._inputsAutoFill.length - 1]
-    } else{
-      this._inputs.push(input)
-      return this._inputs[this._inputs.length - 1]
-    }
+  public addInput(input: Input | InputAutoFill): Input | InputAutoFill {
+    this._inputs.push(input)
+    return this._inputs[this._inputs.length - 1]
+  }
+
+  public addInputAutoFill(input: InputAutoFill): InputAutoFill{
+    this._inputsAutoFill.push(input)
+    return this._inputsAutoFill[this._inputsAutoFill.length - 1]
   }
 
   public get nameForm(){
@@ -29,6 +29,10 @@ class Form{
 
   public getAllInputs(){
     return this._inputs
+  }
+
+  public getAllInputsAutoFill(){
+    return this._inputsAutoFill
   }
 
   public getInput(nameInput: string): Input | undefined{

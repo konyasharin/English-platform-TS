@@ -1,8 +1,9 @@
 import Input from "./Input";
-import {action, makeObservable, observable, override} from "mobx";
+import {action, makeObservable, override} from "mobx";
+import AutoFill from "./AutoFill";
 
 class InputAutoFill extends Input{
-  private readonly _autoFills: string[]
+  private readonly _autoFills: Array<AutoFill>
   constructor(name: string, text: string, placeholder: string) {
     super(name, text, placeholder);
     makeObservable(this, {
@@ -18,7 +19,7 @@ class InputAutoFill extends Input{
   }
 
   public addAutoFill(text: string){
-    this._autoFills.push(text)
+    this._autoFills.push(new AutoFill(text))
   }
 
   public get autoFills(){
@@ -29,8 +30,8 @@ class InputAutoFill extends Input{
     this.text = text
   }
 
-  public clone(): Input {
-    return new InputAutoFill(this.name, this.text, this.placeholder)
+  public clone(): InputAutoFill {
+    return new InputAutoFill(this.name, "", this.placeholder)
   }
 }
 

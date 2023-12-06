@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import checkAuth from "./backend/middleWares/checkAuth.js";
 import * as UserController from "./backend/controllers/UserController.js"
 import cors from "cors"
+import * as WordController from "./backend/controllers/WordContoller.js"
 
 dotenv.config()
 const app = express()
@@ -25,3 +26,5 @@ app.post("/auth/registration", UserController.registration)
 app.post("/auth/login", UserController.login)
 
 app.get("/auth/me", checkAuth, UserController.getMe)
+
+app.get("/library/getWord", WordController.getWord)

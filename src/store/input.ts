@@ -23,7 +23,7 @@ class Input{
   }
 
   public clone(){ // Prototype
-    return new Input(this.name, this.text, this.placeholder)
+    return new Input(this.name, "", this.placeholder)
   }
 }
 

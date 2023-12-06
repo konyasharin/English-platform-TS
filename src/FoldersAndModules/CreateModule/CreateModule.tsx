@@ -9,33 +9,31 @@ import "./CreateModule.css"
 import Btn from "../../Btns/Btn";
 import InputAutoFill from "../../store/InputAutoFill";
 
-function addWord(parent1: ClassInput, parent2: ClassInput){
+function addWord(parent1: InputAutoFill, parent2: InputAutoFill){
   const newWord = parent1.clone()
-  newWord.name = `Word ${Math.ceil(FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputs().length / 2)}`
-  FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInput(newWord)
+  newWord.name = `Word ${Math.ceil((FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputsAutoFill().length + 1) / 2)}`
+  FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newWord)
 
   const newTranslate = parent2.clone()
-  newTranslate.name = `Translate ${Math.ceil(FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputs().length / 2)}`
-  FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInput(newTranslate)
+  newTranslate.name = `Translate ${Math.ceil((FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputsAutoFill().length + 1) / 2)}`
+  FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newTranslate)
 }
 
 const createModuleForm = FormsStore.getInstance().addForm(FormNames.CREATE_MODULE)
 const nameModule = createModuleForm.addInput(new ClassInput(InputNames.MODULE_NAME, "", "Название модуля"))
 
-const firstWordInput = createModuleForm.addInput(
-  new ClassInput(`Word ${Math.ceil(createModuleForm.getAllInputs().length / 2)}`, "", "Слово на английском языке")
+const firstWordInput = createModuleForm.addInputAutoFill(
+  new InputAutoFill(`Word ${Math.ceil((createModuleForm.getAllInputsAutoFill().length + 1) / 2)}`, "", "Слово на английском языке")
 )
 
-const firstTranslateInput = createModuleForm.addInput(
-  new ClassInput(`Translate ${Math.ceil(createModuleForm.getAllInputs().length / 2)}`, "", "Перевод")
+const firstTranslateInput = createModuleForm.addInputAutoFill(
+  new InputAutoFill(`Translate ${Math.ceil((createModuleForm.getAllInputsAutoFill().length + 1) / 2)}`, "", "Перевод")
 )
 
-const test = createModuleForm.addInput(new InputAutoFill("1--", "", "---"))
 
 const CreateModule = observer(() => {
-  const inputsWithoutModuleName = createModuleForm.getAllInputs().filter(data => data.name !== InputNames.MODULE_NAME)
 
-  const inputs = inputsWithoutModuleName.map((data, i) => {
+  const inputs = createModuleForm.getAllInputsAutoFill().map((data, i) => {
     return <Input placeholder={data.placeholder} value={data.text} edit={data} key={i}/>
   })
 
