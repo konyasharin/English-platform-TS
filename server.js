@@ -27,4 +27,4 @@ app.post("/auth/login", UserController.login)
 
 app.get("/auth/me", checkAuth, UserController.getMe)
 
-app.get("/library/getWord", WordController.getWord)
+app.get("/library/:partWord", WordController.getWord)

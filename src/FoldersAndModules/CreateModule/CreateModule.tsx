@@ -7,9 +7,22 @@ import {FormNames, InputNames} from "../../initializeForms";
 import WordAndTranslate from "./WordAndTranslate";
 import "./CreateModule.css"
 import Btn from "../../Btns/Btn";
-import InputAutoFill from "../../store/InputAutoFill";
+import ClassInputAutoFill from "../../store/InputAutoFill";
+import {ChangeEvent} from "react";
+import axios from "../../axios";
+import InputAutoFill from "../../Input/InputAutoFill";
+import AutoFillBlock from "./AutoFillBlock";
+import ChooseAutoFillBtn from "../../Btns/ChooseAutoFillBtn";
 
-function addWord(parent1: InputAutoFill, parent2: InputAutoFill){
+
+interface WordInterface{
+  _id: string,
+  word: string,
+  translate: string
+}
+
+
+function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   const newWord = parent1.clone()
   newWord.name = `Word ${Math.ceil((FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputsAutoFill().length + 1) / 2)}`
   FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newWord)
@@ -19,29 +32,72 @@ function addWord(parent1: InputAutoFill, parent2: InputAutoFill){
   FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newTranslate)
 }
 
+
+async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill){
+  if (event.target.value !== ""){
+    try {
+      await axios.get(`/library/${event.target.value}`, {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(response => response.data)
+        .then(data => {
+          input.cleanAutoFills()
+          data.words.forEach((word: WordInterface) => {
+            input.addAutoFill(word.word)
+          })
+          console.log(input)
+        })
+    } catch (error){
+      console.log(error)
+    }
+  }
+}
+
+
 const createModuleForm = FormsStore.getInstance().addForm(FormNames.CREATE_MODULE)
 const nameModule = createModuleForm.addInput(new ClassInput(InputNames.MODULE_NAME, "", "Название модуля"))
 
 const firstWordInput = createModuleForm.addInputAutoFill(
-  new InputAutoFill(`Word ${Math.ceil((createModuleForm.getAllInputsAutoFill().length + 1) / 2)}`, "", "Слово на английском языке")
+  new ClassInputAutoFill(`Word ${Math.ceil((createModuleForm.getAllInputsAutoFill().length + 1) / 2)}`, "", "Слово на английском языке")
 )
 
 const firstTranslateInput = createModuleForm.addInputAutoFill(
-  new InputAutoFill(`Translate ${Math.ceil((createModuleForm.getAllInputsAutoFill().length + 1) / 2)}`, "", "Перевод")
+  new ClassInputAutoFill(`Translate ${Math.ceil((createModuleForm.getAllInputsAutoFill().length + 1) / 2)}`, "", "Перевод")
 )
 
 
 const CreateModule = observer(() => {
 
   const inputs = createModuleForm.getAllInputsAutoFill().map((data, i) => {
-    return <Input placeholder={data.placeholder} value={data.text} edit={data} key={i}/>
+    return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
+                  onChange={(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill) => editWord(event, input)}/>
   })
 
   let i: number
+  let j: number
+  let autoFillBlocks = []
   let blocks = []
-  for (i = 0; i < inputs.length; i += 2){
+
+  for (i = 0; i < createModuleForm.getAllInputsAutoFill().length; i += 1){
+    j = 0
+    let autoFills = []
+
+    for (j = 0; j < createModuleForm.getAllInputsAutoFill()[i].autoFills.length; j++){
+      autoFills.push(
+        <ChooseAutoFillBtn text={createModuleForm.getAllInputsAutoFill()[i].autoFills[j].text} key={j}/>
+      )
+    }
+
+    autoFillBlocks.push(
+      <AutoFillBlock input={inputs[i]} autoFills={autoFills}/>
+    )
+  }
+
+  for (i = 0; i < createModuleForm.getAllInputsAutoFill().length; i += 2){
     blocks.push(
-      <WordAndTranslate word={inputs[i]} translate={inputs[i + 1]}/>
+      <WordAndTranslate word={autoFillBlocks[i]} translate={autoFillBlocks[i + 1]} key={i}/>
     )
   }
 

@@ -2,10 +2,6 @@
     display: flex;
 }
 
-.word-and-translate input:first-child{
-    margin-right: 20px;
-}
-
 .create-modules input[placeholder="Название модуля"]{
     margin-bottom: 70px;
     width: 100%;
@@ -27,4 +23,16 @@
 
 .create-modules .btn{
     margin-top: 30px;
+}
+
+.create-modules input{
+    width: 100%;
+}
+
+.autofill-block{
+    width: 560px;
+}
+
+.autofill-block:nth-child(odd){
+    margin-right: 20px;
 }

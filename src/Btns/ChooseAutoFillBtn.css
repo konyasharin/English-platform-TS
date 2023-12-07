@@ -1,0 +1,12 @@
+.autofill-btn{
+    border: none;
+    border-radius: 8px;
+    background-color: #4D4DFF;
+    width: 100%;
+    height: 80px;
+    color: white;
+    text-align: left;
+    padding-left: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+}
