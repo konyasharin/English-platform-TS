@@ -15,10 +15,10 @@ import AutoFillBlock from "./AutoFillBlock";
 import ChooseAutoFillBtn from "../../Btns/ChooseAutoFillBtn";
 
 
-interface WordInterface{
+export interface WordInterface{
   _id: string,
   word: string,
-  translate: string
+  translates: Array<string>
 }
 
 
@@ -31,7 +31,6 @@ function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   newTranslate.name = `Translate ${Math.ceil((FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputsAutoFill().length + 1) / 2)}`
   FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newTranslate)
 }
-
 
 async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill){
   if (event.target.value !== ""){
@@ -47,11 +46,28 @@ async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputA
           data.words.forEach((word: WordInterface) => {
             input.addAutoFill(word.word)
           })
-          console.log(input)
         })
     } catch (error){
       console.log(error)
     }
+  } else{
+    input.cleanAutoFills()
+  }
+}
+
+async function editTranslate(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill, prev: ClassInputAutoFill){
+
+}
+
+async function onCreateModule(){
+  if(createModuleForm.checkRepeatAutoFillInputs()){
+    alert("Ошибка! Есть повторяющиеся поля")
+  } else if(createModuleForm.getAllInputsAutoFill().length < 2) {
+    alert("Ошибка! Нужно создать хотя бы одно слово")
+  } else if(createModuleForm.checkEmptyAutoFillInputs()){
+    alert("Ошибка! Есть незаполненные поля")
+  }else{
+    console.log("123")
   }
 }
 
@@ -71,8 +87,14 @@ const firstTranslateInput = createModuleForm.addInputAutoFill(
 const CreateModule = observer(() => {
 
   const inputs = createModuleForm.getAllInputsAutoFill().map((data, i) => {
-    return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
-                  onChange={(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill) => editWord(event, input)}/>
+    if (i % 2 === 0){
+      return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
+                            onChange={(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill) => editWord(event, input)}/>
+    } else{
+      return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
+                            onChange={(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill, prev: ClassInputAutoFill) => editTranslate(event, input, prev)}
+                            prev={createModuleForm.getAllInputsAutoFill()[i - 1]}/>
+    }
   })
 
   let i: number
@@ -85,9 +107,18 @@ const CreateModule = observer(() => {
     let autoFills = []
 
     for (j = 0; j < createModuleForm.getAllInputsAutoFill()[i].autoFills.length; j++){
-      autoFills.push(
-        <ChooseAutoFillBtn text={createModuleForm.getAllInputsAutoFill()[i].autoFills[j].text} key={j}/>
-      )
+      if(i % 2 === 0){
+        autoFills.push(
+          <ChooseAutoFillBtn text={createModuleForm.getAllInputsAutoFill()[i].autoFills[j].text} key={j}
+                             input={createModuleForm.getAllInputsAutoFill()[i]}
+                             next={createModuleForm.getAllInputsAutoFill()[i + 1]}/>
+        )
+      } else{
+        autoFills.push(
+          <ChooseAutoFillBtn text={createModuleForm.getAllInputsAutoFill()[i].autoFills[j].text} key={j}
+                             input={createModuleForm.getAllInputsAutoFill()[i]}/>
+        )
+      }
     }
 
     autoFillBlocks.push(
@@ -106,7 +137,7 @@ const CreateModule = observer(() => {
       <Input placeholder={"Название модуля"} value={nameModule.text} edit={nameModule}/>
       {blocks}
       <Add className={"module-add"} img={"icons/plus-blue.png"} onClick={() => {addWord(firstWordInput, firstTranslateInput)}}/>
-      <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"}/>
+      <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"} onClick={onCreateModule}/>
     </section>
   )
 })

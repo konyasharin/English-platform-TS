@@ -13,7 +13,7 @@ class InputAutoFill extends Input{
       onChange: override,
       clone: override,
       addAutoFill: action,
-      chooseFill: action,
+      chooseAutoFill: action,
       cleanAutoFills: action,
       _autoFills: observable
     })
@@ -28,16 +28,24 @@ class InputAutoFill extends Input{
     return this._autoFills
   }
 
-  public chooseFill(text: string){
-    this.text = text
-  }
-
   public clone(): InputAutoFill {
     return new InputAutoFill(this.name, "", this.placeholder)
   }
 
   public cleanAutoFills(){
     this._autoFills = []
+  }
+
+  public chooseAutoFill(event: any, next?: InputAutoFill, autoFillTranslate?: any){
+    this.onChange(event.target.innerText.toLowerCase())
+    this.cleanAutoFills()
+    if (next && autoFillTranslate){
+      autoFillTranslate(event, next)
+    }
+  }
+
+  public equal(obj: InputAutoFill){
+    return this.text === obj.text;
   }
 }
 

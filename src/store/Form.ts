@@ -43,6 +43,29 @@ class Form{
       }
     }
   }
+
+  public checkRepeatAutoFillInputs(): boolean{
+    let i: number
+    let j: number
+    for (i = 0; i < this.getAllInputsAutoFill().length; i ++){
+      for (j = i + 2; j < this.getAllInputsAutoFill().length; j += 2){ // j += 2 потому что сравниваются переводы с
+        if (this.getAllInputsAutoFill()[i].equal(this.getAllInputsAutoFill()[j])){ // переводами и слова со словами
+          return true
+        }
+      }
+    }
+    return false
+  }
+
+  public checkEmptyAutoFillInputs(): boolean{
+    let i: number
+    for(i = 0; i < this.getAllInputsAutoFill().length; i ++){
+      if(this.getAllInputsAutoFill()[i].text === ""){
+        return true
+      }
+    }
+    return false
+  }
 }
 
 export default Form

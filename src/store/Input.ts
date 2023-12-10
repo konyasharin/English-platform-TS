@@ -1,4 +1,4 @@
-import {action, makeAutoObservable, makeObservable, observable, observe} from "mobx";
+import {action, makeObservable, observable} from "mobx";
 
 class Input{
   public name: string
