@@ -1,3 +1,5 @@
+// В данном модуле происходит настройка axios (библиотека для работы с REST API)
+
 import axios from "axios";
 
 const instance = axios.create({

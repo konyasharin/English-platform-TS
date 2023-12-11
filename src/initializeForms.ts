@@ -1,3 +1,5 @@
+// Данный модуль инициализирует начальные формы (регистрация, вход)
+
 import FormsStore from "./store/FormsStore";
 import Input from "./store/Input";
 

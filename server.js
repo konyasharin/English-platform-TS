@@ -1,3 +1,6 @@
+// Модуль для создания запросов (get и post запросы) к базе данных
+// на основе созданных моделей из папки models и контроллеров из папки models
+
 import express from "express"
 import mongoose from "mongoose"
 import dotenv from 'dotenv'
@@ -5,6 +8,7 @@ import checkAuth from "./backend/middleWares/checkAuth.js";
 import * as UserController from "./backend/controllers/UserController.js"
 import cors from "cors"
 import * as WordController from "./backend/controllers/WordContoller.js"
+import * as ModuleController from "./backend/controllers/ModuleController.js"
 
 dotenv.config()
 const app = express()
@@ -28,3 +32,5 @@ app.post("/auth/login", UserController.login)
 app.get("/auth/me", checkAuth, UserController.getMe)
 
 app.get("/library/:partWord", WordController.getWord)
+
+app.post("/modules/create", ModuleController.createModule)

@@ -1,3 +1,7 @@
+// Данный компонент проверяет авторизован ли пользователь, если не авторизован,
+// то у нас не будет получена информация о пользователе,
+// иначе мы получим всю информацию о пользователе
+
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 import User from "../store/User";
@@ -5,6 +9,7 @@ import FormsStore from "../store/FormsStore"
 import {FormNames} from "../initializeForms";
 import axios from "../axios";
 
+// Метод для вытягивания информации о пользователе (если присутствует токен авторизации)
 export async function tryGetUserData(){
   try {
     await axios.get("auth/me", {
@@ -19,12 +24,14 @@ export async function tryGetUserData(){
   }
 }
 
+// Метод для открытия формы авторизации
 export function openForm(){
   // @ts-ignore
   document.querySelector(".bg-black").classList.remove("bg-black_disable")
   FormsStore.getInstance().changeStatus(FormNames.CHOOSE)
 }
 
+// Метод для закрытия формы авторизации
 export function closeForm(event?: any){
   if(event){
     if(event.target.classList.contains("bg-black")){
@@ -37,6 +44,8 @@ export function closeForm(event?: any){
   }
 }
 
+// Метод для проверки авторизовались ли мы успешно, и если нет, то открывается форма
+// для авторизации
 const CheckAuth = () => {
   const navigate = useNavigate()
   useEffect( () => {

@@ -1,3 +1,6 @@
+// Компонент, содержащий окно входа (потом будет передано в форму),
+// а также метод для завершения авторизации
+
 import Input from "../Input/Input";
 import Form from "../Form/Form";
 import FormsStore from "../store/FormsStore";
@@ -5,8 +8,12 @@ import {FormNames, InputNames} from "../initializeForms";
 import {observer} from "mobx-react-lite";
 import axios from "../axios";
 import formsStore from "../store/FormsStore";
-import {closeForm, tryGetUserData} from "../Auth/CheckAuth";
+import {closeForm} from "../Auth/CheckAuth";
 
+// Метод для завершения авторизации (устанавливаем токен для авторизации локально
+// у пользователя и закрываем форму(если авторизация прошла успешно))
+// login - логин пользователя
+// password - пароль пользователя
 async function endEntry(login: string, password: string){
   try {
     await axios.post("auth/login", {

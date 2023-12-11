@@ -1,3 +1,5 @@
+// Данный компонент содержит кнопку, которая заполняет инпуты при нажатии на нее
+
 import "./ChooseAutoFillBtn.css"
 import InputAutoFill from "../store/InputAutoFill";
 import axios from "../axios";
@@ -12,6 +14,9 @@ interface ChooseAutoFillBtnInterface{
 }
 
 
+// Функция для вытягивания перевода слова из базы данных
+// event - event из pure JS
+// input - экземпляр класса InputAutoFill который должен содеражть перевод слова
 async function autoFillTranslate(event: ChangeEvent<HTMLInputElement>, input: InputAutoFill){
   try{
     await axios.get(`/library/${event.target.innerText.toLowerCase()}`, {
@@ -33,6 +38,11 @@ async function autoFillTranslate(event: ChangeEvent<HTMLInputElement>, input: In
   }
 }
 
+// Функция для вытягивания слова из базы данных по части слова и предложения вариантов для
+// автозаполнения
+// event - event из pure JS
+// input - экземпляр класса InputAutoFill который мы будем заполнять
+// next - экземпляр класса InputAutoFill, в котором должен содержаться перевод слова
 function ChooseAutoFillBtn({text, input, next}: ChooseAutoFillBtnInterface){
   return(
     <button className={"autofill-btn"} onClick={

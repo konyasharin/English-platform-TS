@@ -1,3 +1,6 @@
+// Компонент содержит окно регистрации (потом будет передан в форму) и метод для
+// завершения решистрации
+
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 import {observer} from "mobx-react-lite";
@@ -6,6 +9,10 @@ import {FormNames, InputNames} from "../initializeForms";
 import formsStore from "../store/FormsStore";
 import axios from "../axios";
 
+// Метод для завершения регистрации
+// login - логин пользователя
+// password - пароль пользователя
+// repeatPassword - повтор пароля
 async function endRegistration(login: string, password: string, repeatPassword: string){
   if (password === repeatPassword){
     try {

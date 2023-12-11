@@ -1,4 +1,5 @@
-
+// Компонент содержит блок с двумя инпутами (слово и перевод)
+// с кнопками, которы
 interface AutoFillBlockInterface{
   input: any,
   autoFills: any

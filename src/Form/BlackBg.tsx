@@ -1,3 +1,6 @@
+// Данный компонент содержит текущую форму из следующих:
+// выбор регистрации или входа/регистрация/вход
+
 import "./Form.css"
 import React from "react";
 import {closeForm} from "../Auth/CheckAuth";
