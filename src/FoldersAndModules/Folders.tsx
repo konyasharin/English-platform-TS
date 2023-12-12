@@ -1,3 +1,5 @@
+// Компонент содержит страницу с папками
+
 import Folder from "./Folder";
 import "./Folders.css"
 import Add from "./Add";

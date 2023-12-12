@@ -1,3 +1,5 @@
+// Модуль содержит контроллер для работы со словами в базе данных
+
 import WordModel from "../models/Word.js"
 
 export const getWord = async (request, response) => {

@@ -1,3 +1,8 @@
+// Данный компонент содержит страницу для создания модуля
+// а также методы, необходимые для этого (добавление слов(блоков слов) - addWord,
+// предлагание автозаполнения при вводе слов - editWord, проверка на правильность и
+// добавление модуля в базу данных - onCreateModule
+
 import Input from "../../Input/Input";
 import FormsStore from "../../store/FormsStore";
 import ClassInput from "../../store/Input"
@@ -22,6 +27,9 @@ export interface WordInterface{
 }
 
 
+// Метод для создания инпутов для ввода нового слова и перевода для него
+// parent1 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода слова
+// parent2 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода перевода
 function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   const newWord = parent1.clone()
   newWord.name = `Word ${Math.ceil((FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputsAutoFill().length + 1) / 2)}`
@@ -32,6 +40,11 @@ function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newTranslate)
 }
 
+// Метод для вытаскивания предполагаемо вводимого слова из базы данных
+// и предлагания этих переводов пользователю (добавление к экземпляру класса
+// InputAutoFill в поле autoFills всех предполагаемых слов)
+// event - event из JS
+// input - экземпляр класса InputAutoFill, в который мы будем передавать предполагаемые слова
 async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill){
   if (event.target.value !== ""){
     try {
@@ -59,6 +72,7 @@ async function editTranslate(event: ChangeEvent<HTMLInputElement>, input: ClassI
 
 }
 
+// Метод для проверки формы по созданию модуля на введенные значения и создание модуля в базе данных
 async function onCreateModule(){
   if(createModuleForm.checkRepeatAutoFillInputs()){
     alert("Ошибка! Есть повторяющиеся поля")
@@ -71,7 +85,7 @@ async function onCreateModule(){
   }
 }
 
-
+// Создание формы для создания модуля и первого блока слово - перевод
 const createModuleForm = FormsStore.getInstance().addForm(FormNames.CREATE_MODULE)
 const nameModule = createModuleForm.addInput(new ClassInput(InputNames.MODULE_NAME, "", "Название модуля"))
 
@@ -85,7 +99,10 @@ const firstTranslateInput = createModuleForm.addInputAutoFill(
 
 
 const CreateModule = observer(() => {
-
+  // Вытаскиваем из формы все инпуты (не экземпляры класса Input!!! а экземпляры класса InputAutoFill)
+  // и на основе данных в этих экземплярах создаем уже функциональные реакт-кмпоненты InputAutoFill
+  // и храним их в массиве inputs. В зависимости от индекса в массиве компонент хранит разные инпуты.
+  // Если индекс четный, то это слово. Если нечетный - перевод.
   const inputs = createModuleForm.getAllInputsAutoFill().map((data, i) => {
     if (i % 2 === 0){
       return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
@@ -97,6 +114,10 @@ const CreateModule = observer(() => {
     }
   })
 
+  // Если в экземпляре класса InputAutoFill есть в поле autoFills
+  // какие-то значения для автодополнения, то мы берем эти значения и
+  // создаем компоненты ChooseAutoFillBtn (кнопка для выбора автодополнения)
+  // и храним их в массиве
   let i: number
   let j: number
   let autoFillBlocks = []
@@ -121,11 +142,16 @@ const CreateModule = observer(() => {
       }
     }
 
+    // Уже сформированные ранее инут и автодополнения для него передаем через
+    // пропсы в компонент AutoFillBlock и храним каждый такой блок в массиве autoFillBlocks
     autoFillBlocks.push(
       <AutoFillBlock input={inputs[i]} autoFills={autoFills}/>
     )
   }
 
+  // Теперь в компоненте WorkAndTranslate создаем пары из компонентов
+  // AutoFillBlock (слово и перевод - и для каждого сразу есть кнопки для
+  // автодополнения)
   for (i = 0; i < createModuleForm.getAllInputsAutoFill().length; i += 2){
     blocks.push(
       <WordAndTranslate word={autoFillBlocks[i]} translate={autoFillBlocks[i + 1]} key={i}/>

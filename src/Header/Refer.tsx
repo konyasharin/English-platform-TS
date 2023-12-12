@@ -1,3 +1,5 @@
+// Компонент содержит ссылку из "хедера" (ссылку на другую страницу вверху всех страниц)
+
 import style from "./Refer.module.css"
 import {Link} from "react-router-dom";
 

@@ -1,3 +1,6 @@
+// Компонент содержит два инпута - слово и перевод, для каждого
+// из которых уже есть кнопки с автодополнением
+
 import "./CreateModule.css"
 interface WorkAndTranslateInterface{
   word: any,

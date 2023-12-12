@@ -1,3 +1,5 @@
+// Модуль содержит middleWare для проверки аутентификации пользователя
+
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv"
 dotenv.config()

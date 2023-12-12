@@ -1,3 +1,5 @@
+// Компонент содержит последние созданные модули на главной странице
+
 import "./LastModules.css"
 import Block from "./Block";
 function LastModules(){

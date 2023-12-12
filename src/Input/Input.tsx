@@ -1,3 +1,5 @@
+// Компонент содержит обычный инпут
+
 import "./Input.css"
 import InputClass from "../store/Input";
 import FormsStore from "../store/FormsStore";

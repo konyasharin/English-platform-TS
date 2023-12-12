@@ -1,3 +1,5 @@
+// Компонент содержит главную страницу
+
 import "./Main.css"
 import MainBtn from "../Btns/MainBtn";
 import LastModules from "./LastModules/LastModules";

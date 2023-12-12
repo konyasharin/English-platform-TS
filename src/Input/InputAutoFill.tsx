@@ -1,3 +1,5 @@
+// Компонент содержит инпут с автодополнением
+
 import "./Input.css"
 import FormsStore from "../store/FormsStore";
 import InputAutoFillClass from "../store/InputAutoFill";

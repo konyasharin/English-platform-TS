@@ -1,3 +1,6 @@
+// Компонент содержит кнопку (блок) для возврата на главную страницу
+// (видно слева на всех страницах)
+
 import {Link} from "react-router-dom";
 import "./ToMain.css"
 function ToMain(){

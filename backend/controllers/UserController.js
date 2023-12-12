@@ -1,3 +1,5 @@
+// Модуль содержит контроллер для работы с пользователями в базе данных
+
 import bcrypt from "bcrypt";
 import UserModel from "../models/User.js";
 import jwt from "jsonwebtoken";

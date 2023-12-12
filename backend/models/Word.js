@@ -1,3 +1,5 @@
+// Модуль сожержит схему слова в базе данных
+
 import {Schema, model} from "mongoose";
 
 const schema = new Schema({

@@ -1,5 +1,5 @@
 // Модуль для создания запросов (get и post запросы) к базе данных
-// на основе созданных моделей из папки models и контроллеров из папки models
+// на основе созданных моделей из папки models и контроллеров из папки controllers
 
 import express from "express"
 import mongoose from "mongoose"

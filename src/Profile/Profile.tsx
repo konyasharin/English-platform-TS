@@ -1,3 +1,5 @@
+// Компонент содержит страницу профиля
+
 import Input from "../Input/Input";
 import MainBtn from "../Btns/MainBtn";
 import "./Profile.css"

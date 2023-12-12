@@ -1,3 +1,5 @@
+// Модуль содержит контроллер для работы с модулями в базе данных
+
 import ModuleModel from "../models/Module.js"
 
 export const createModule = async (request, response) => {

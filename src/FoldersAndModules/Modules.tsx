@@ -1,3 +1,5 @@
+// Компонент содержит страницу с модулями
+
 import Folder from "./Folder";
 import Add from "./Add";
 import CheckAuth from "../Auth/CheckAuth";
