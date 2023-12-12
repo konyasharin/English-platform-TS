@@ -18,7 +18,12 @@ export async function tryGetUserData(){
       }
     })
       .then(response => response.data)
-      .then(data => User.getInstance().login = data.userName)
+      .then(data => {
+        if (User.getInstance().login === ""){ // чтобы не обновлять компоненты лишний раз делаем проверку
+          User.getInstance().login = data.userName
+          User.getInstance().modules = data.modules
+        }
+      })
   }catch (error){
     console.log(error)
   }

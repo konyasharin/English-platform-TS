@@ -18,6 +18,8 @@ import axios from "../../axios";
 import InputAutoFill from "../../Input/InputAutoFill";
 import AutoFillBlock from "./AutoFillBlock";
 import ChooseAutoFillBtn from "../../Btns/ChooseAutoFillBtn";
+import User from "../../store/User";
+import CheckAuth from "../../Auth/CheckAuth";
 
 
 export interface WordInterface{
@@ -80,8 +82,35 @@ async function onCreateModule(){
     alert("Ошибка! Нужно создать хотя бы одно слово")
   } else if(createModuleForm.checkEmptyAutoFillInputs()){
     alert("Ошибка! Есть незаполненные поля")
-  }else{
-    console.log("123")
+  } else if(createModuleForm.getInput(InputNames.MODULE_NAME)!.text === ""){
+    alert("Ошибка! Введите название модуля")
+  } else{
+    let i: number
+    let words: Array<object> = []
+
+    for(i = 0; i < createModuleForm.getAllInputsAutoFill().length; i += 2){
+      words.push({
+        word: createModuleForm.getAllInputsAutoFill()[i].text,
+        translate: createModuleForm.getAllInputsAutoFill()[i + 1].text
+      })
+    }
+
+    try{
+      await axios.post(`modules/create`, {
+        userName: User.getInstance().login,
+        name: createModuleForm.getInput(InputNames.MODULE_NAME)!.text,
+        words: words
+      })
+        .then(response => response.data)
+        .then(data => {
+          User.getInstance().modules = [
+            ...User.getInstance().modules,
+            data
+          ]
+        })
+    } catch (error){
+      console.log(error)
+    }
   }
 }
 
@@ -99,6 +128,7 @@ const firstTranslateInput = createModuleForm.addInputAutoFill(
 
 
 const CreateModule = observer(() => {
+  CheckAuth()
   // Вытаскиваем из формы все инпуты (не экземпляры класса Input!!! а экземпляры класса InputAutoFill)
   // и на основе данных в этих экземплярах создаем уже функциональные реакт-кмпоненты InputAutoFill
   // и храним их в массиве inputs. В зависимости от индекса в массиве компонент хранит разные инпуты.
