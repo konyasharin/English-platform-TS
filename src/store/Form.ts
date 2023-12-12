@@ -8,7 +8,7 @@ class Form{
   // массив всех инпутов (обычных) в форме
   private readonly _inputs: Array<Input>
   // массив всех инпутов с автозаполнением в форме
-  private readonly _inputsAutoFill: Array<InputAutoFill>
+  private _inputsAutoFill: Array<InputAutoFill>
   // имя формы (для поиска в FormsStore)
   private readonly _nameForm: string
 
@@ -88,6 +88,28 @@ class Form{
       }
     }
     return false
+  }
+
+  public deleteAllAutoFillInputs(){
+    this._inputsAutoFill = []
+  }
+
+  cleanAllForm(){
+    this.cleanAllAutoFillInputs()
+    this.cleanAllInputs()
+  }
+
+  public cleanAllInputs(){
+    this._inputs.forEach(input => {
+      input.clean()
+    })
+  }
+
+  public cleanAllAutoFillInputs(){
+    this._inputsAutoFill.forEach(inputAutoFill => {
+      inputAutoFill.cleanAutoFills()
+      inputAutoFill.clean()
+    })
   }
 }
 

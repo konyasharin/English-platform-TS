@@ -20,7 +20,9 @@ import AutoFillBlock from "./AutoFillBlock";
 import ChooseAutoFillBtn from "../../Btns/ChooseAutoFillBtn";
 import User from "../../store/User";
 import CheckAuth from "../../Auth/CheckAuth";
-
+import ModulesStore from "../../store/ModulesStore";
+import Module from "../../store/Module";
+import ClassWord from "../../store/Word";
 
 export interface WordInterface{
   _id: string,
@@ -28,6 +30,17 @@ export interface WordInterface{
   translates: Array<string>
 }
 
+export interface ModuleInterface{
+  name: string,
+  words: Array<Word>,
+  _id: string,
+  __v: number
+}
+
+export interface Word{
+  word: string,
+  translate: string
+}
 
 // Метод для создания инпутов для ввода нового слова и перевода для него
 // parent1 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода слова
@@ -102,11 +115,19 @@ async function onCreateModule(){
         words: words
       })
         .then(response => response.data)
-        .then(data => {
-          User.getInstance().modules = [
-            ...User.getInstance().modules,
-            data
-          ]
+        .then((data: ModuleInterface)  => {
+          // Добавляем созданный модуль в стор ко всем модулям пользователя
+          let words: Array<ClassWord> = []
+          data.words.forEach(word => {
+            words.push(new ClassWord(word.word, word.translate))
+          })
+          ModulesStore.getInstance().addModule(new Module(data.name, words))
+
+          createModuleForm.cleanAllForm()
+          createModuleForm.deleteAllAutoFillInputs()
+          createModuleForm.addInputAutoFill(firstWordInput)
+          createModuleForm.addInputAutoFill(firstTranslateInput)
+          alert("Модуль успешно создан!")
         })
     } catch (error){
       console.log(error)

@@ -4,8 +4,8 @@ import Folder from "./Folder";
 import Add from "./Add";
 import CheckAuth from "../Auth/CheckAuth";
 import {Link} from "react-router-dom";
-import User from "../store/User";
 import {observer} from "mobx-react-lite";
+import ModulesStore from "../store/ModulesStore";
 
 const stylesLink={
   display: "block",
@@ -14,11 +14,13 @@ const stylesLink={
 
 function createModuleComponents(){
   let modules: any[] = []
-  User.getInstance().modules.forEach(module => {
+  let i: number
+  for (i = 0; i < ModulesStore.getInstance().modules.length; i++){
     modules.push(
-      <Folder className={"module"} img={"/icons/module.png"} alt={"module"} title={module.name} key={module._id}/>
+      <Folder className={"module"} img={"/icons/module.png"} alt={"module"}
+              title={ModulesStore.getInstance().modules[i].name} key={i}/>
     )
-  })
+  }
   return modules
 }
 

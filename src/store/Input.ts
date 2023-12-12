@@ -34,6 +34,10 @@ class Input{
   public clone(){
     return new Input(this.name, "", this.placeholder)
   }
+
+  public clean(){
+    this.text = ""
+  }
 }
 
 export default Input

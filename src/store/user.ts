@@ -2,17 +2,9 @@
 
 import {makeAutoObservable} from "mobx";
 
-export interface ModuleInterface{
-    name: string,
-    words: Array<object>,
-    _id: string,
-    __v: number
-}
-
 class User{
     // логин пользователя
     private _login: string;
-    private _modules: Array<ModuleInterface>
     // единственный экземпляр класса User (Singleton)
     private static _instance: User
 
@@ -20,7 +12,6 @@ class User{
     private constructor() {
         makeAutoObservable(this)
         this._login = ""
-        this._modules = []
     }
 
     // Метод для создания экземпляра данного класса (хранится в _instance) если его еще нет,
@@ -38,14 +29,6 @@ class User{
 
     public set login(login: string){
         this._login = login
-    }
-
-    public set modules(modules: Array<ModuleInterface>){
-        this._modules = modules
-    }
-
-    public get modules(){
-        return this._modules
     }
 }
 

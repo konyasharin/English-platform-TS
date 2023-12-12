@@ -8,6 +8,10 @@ import User from "../store/User";
 import FormsStore from "../store/FormsStore"
 import {FormNames} from "../initializeForms";
 import axios from "../axios";
+import {ModuleInterface} from "../FoldersAndModules/CreateModule/CreateModule";
+import ModulesStore from "../store/ModulesStore";
+import Module from "../store/Module";
+import Word from "../store/Word";
 
 // Метод для вытягивания информации о пользователе (если присутствует токен авторизации)
 export async function tryGetUserData(){
@@ -21,7 +25,13 @@ export async function tryGetUserData(){
       .then(data => {
         if (User.getInstance().login === ""){ // чтобы не обновлять компоненты лишний раз делаем проверку
           User.getInstance().login = data.userName
-          User.getInstance().modules = data.modules
+          data.modules.forEach((module: ModuleInterface) => {
+            let words: Array<Word> = []
+            module.words.forEach(word => {
+              words.push(new Word(word.word, word.translate))
+            })
+            ModulesStore.getInstance().addModule(new Module(module.name, words))
+          })
         }
       })
   }catch (error){
