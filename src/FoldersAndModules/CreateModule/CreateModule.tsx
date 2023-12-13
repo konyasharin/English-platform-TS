@@ -23,6 +23,8 @@ import CheckAuth from "../../Auth/CheckAuth";
 import ModulesStore from "../../store/ModulesStore";
 import Module from "../../store/Module";
 import ClassWord from "../../store/Word";
+import PlusBlueImg from "../../assets/icons/plus-blue.png"
+
 
 export interface WordInterface{
   _id: string,
@@ -213,7 +215,7 @@ const CreateModule = observer(() => {
     <section className="container create-modules">
       <Input placeholder={"Название модуля"} value={nameModule.text} edit={nameModule}/>
       {blocks}
-      <Add className={"module-add"} img={"icons/plus-blue.png"} onClick={() => {addWord(firstWordInput, firstTranslateInput)}}/>
+      <Add className={"module-add"} img={PlusBlueImg} onClick={() => {addWord(firstWordInput, firstTranslateInput)}}/>
       <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"} onClick={onCreateModule}/>
     </section>
   )

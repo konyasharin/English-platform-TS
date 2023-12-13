@@ -16,6 +16,11 @@ import FormsStore from "./store/FormsStore";
 import initializeForms from "./initializeForms";
 import CreateModule from "./FoldersAndModules/CreateModule/CreateModule";
 import ChooseModule from "./Trainings/ChooseModule";
+import TrainingsImg from "./assets/header/trainings.png"
+import FoldersImg from "./assets/header/folders.png"
+import ModulesImg from "./assets/header/modules.png"
+import ProfileImg from "./assets/header/profile.png"
+import AvatarImg from "./assets/avatar.png"
 
 
 initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
@@ -24,10 +29,10 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <section className="header container">
-            <Refer text={"Тренировки"} img={"header/trainings.png"} alt={"trainings"} url={"trainings"}></Refer>
-            <Refer text={"Папки"} img={"header/folders.png"} alt={"folders"} url={"folders"}></Refer>
-            <Refer text={"Модули"} img={"header/modules.png"} alt={"modules"} url={"modules"}></Refer>
-            <Refer text={"Профиль"} img={"header/profile.png"} alt={"profile"} url={"profile"}></Refer>
+            <Refer text={"Тренировки"} img={TrainingsImg} alt={"trainings"} url={"trainings"}></Refer>
+            <Refer text={"Папки"} img={FoldersImg} alt={"folders"} url={"folders"}></Refer>
+            <Refer text={"Модули"} img={ModulesImg} alt={"modules"} url={"modules"}></Refer>
+            <Refer text={"Профиль"} img={ProfileImg} alt={"profile"} url={"profile"}></Refer>
           </section>
           <ToMain/>
           <Routes>
@@ -35,7 +40,7 @@ function App() {
             <Route path="/trainings" element={<Trainings />}/>
             <Route path="/folders" element={<Folders />}/>
             <Route path="/modules" element={<Modules />}/>
-            <Route path="/profile" element={<Profile img={"/avatar.png"}/>}/>
+            <Route path="/profile" element={<Profile img={AvatarImg}/>}/>
             <Route path="/createModule" element={<CreateModule />}/>
             <Route path="/trainings/learn/chooseModule" element={<ChooseModule />}/>
           </Routes>

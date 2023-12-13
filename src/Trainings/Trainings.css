@@ -23,3 +23,43 @@
 .training-block a{
     margin-top: auto;
 }
+
+.choose-module{
+    margin-top: 90px;
+    text-align: center;
+}
+
+.choose-module h2{
+    margin-bottom: 50px;
+}
+
+.choose-module .choose-module__modules{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.change-count img{
+    cursor: pointer;
+}
+
+.change-count .btn{
+    cursor: auto;
+    padding: 12px 36px;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.change-count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.count-words{
+    display: flex;
+    margin-bottom: 50px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}

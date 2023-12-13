@@ -8,6 +8,7 @@
     align-items: center;
     cursor: pointer;
     flex-direction: column;
+    overflow-wrap: anywhere;
 }
 
 .module{

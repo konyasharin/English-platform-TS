@@ -14,7 +14,8 @@ export enum FormNames{
   REGISTRATION = "REGISTRATION",
   ENTRY = "ENTRY",
   CHOOSE = "CHOOSE",
-  CREATE_MODULE = "CREATE_MODULE"
+  CREATE_MODULE = "CREATE_MODULE",
+  TRAINING_SETTING = "TRAINING_SETTING"
 }
 
 function initializeForms(formStore: FormsStore){

@@ -8,6 +8,7 @@ import Entry from "../Entry/Entry";
 import FormsStore from "../store/FormsStore";
 import {observer} from "mobx-react-lite";
 import {FormNames} from "../initializeForms";
+import TrainingSetting from "../Trainings/TrainingSetting";
 
 
 // Метод для изменения состояния формы авторизации
@@ -19,6 +20,8 @@ export function editForm() {
       return Registration
     case FormNames.ENTRY:
       return  Entry
+    case FormNames.TRAINING_SETTING:
+      return TrainingSetting
     default:
       return ChooseEntry
   }
