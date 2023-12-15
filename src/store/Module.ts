@@ -13,6 +13,10 @@ class Module{
   public get name(){
     return this._name
   }
+
+  public get words(){
+    return this._words
+  }
 }
 
 export default Module

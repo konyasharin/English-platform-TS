@@ -4,9 +4,11 @@ import Module from "./Module";
 class ModulesStore{
   private readonly _modules: Array<Module>
   private static _instance: ModulesStore
+  public currentModule: string
   private constructor() {
     makeAutoObservable(this)
     this._modules = []
+    this.currentModule = ""
   }
 
   public static getInstance(){
@@ -23,6 +25,15 @@ class ModulesStore{
 
   public get modules(){
     return this._modules
+  }
+
+  public getModule(moduleName: string){
+    let i: number
+    for(i = 0; i < this._modules.length; i++){
+      if(this._modules[i].name === moduleName){
+        return this._modules[i]
+      }
+    }
   }
 }
 

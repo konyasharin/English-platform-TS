@@ -3,12 +3,18 @@ import Btn from "../Btns/Btn";
 import Minus from "../assets/icons/minus.png"
 import Plus from "../assets/icons/plus.png"
 import {useState} from "react";
+import ModulesStore from "../store/ModulesStore";
+import { useNavigate} from "react-router-dom";
+import {closeForm} from "../Auth/CheckAuth";
 
 function TrainingSetting(){
   const [countWords, setCountWords] = useState(1)
+  const maxCount = ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words.length
 
   const increment = () => {
-    setCountWords(countWords + 1)
+    if(countWords < maxCount){
+      setCountWords(countWords + 1)
+    }
   }
 
   const decrement = () => {
@@ -16,6 +22,8 @@ function TrainingSetting(){
       setCountWords(countWords - 1)
     }
   }
+
+  const navigate = useNavigate()
 
   const content = (
     <div className="count-words">
@@ -29,7 +37,10 @@ function TrainingSetting(){
   )
 
   return(
-    <Form title={"Настройка тренировки"} inputs={content} btnText={"Начать тренировку"} onClick={() => console.log("start")}/>
+    <Form title={"Настройка тренировки"} inputs={content} btnText={"Начать тренировку"} onClick={() => {
+      closeForm()
+      navigate("/trainings/learn/training")
+    }}/>
   )
 }
 
