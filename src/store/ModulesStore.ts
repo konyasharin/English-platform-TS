@@ -4,11 +4,11 @@ import Module from "./Module";
 class ModulesStore{
   private readonly _modules: Array<Module>
   private static _instance: ModulesStore
-  public currentModule: string
+  private _currentModule: string
   private constructor() {
     makeAutoObservable(this)
     this._modules = []
-    this.currentModule = ""
+    this._currentModule = ""
   }
 
   public static getInstance(){
@@ -34,6 +34,14 @@ class ModulesStore{
         return this._modules[i]
       }
     }
+  }
+
+  public get currentModule(){
+    return this._currentModule
+  }
+
+  public set currentModule(moduleName: string){
+    this._currentModule = moduleName
   }
 }
 

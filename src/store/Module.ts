@@ -3,7 +3,7 @@ import Word from "./Word";
 
 class Module{
   private readonly _name: string
-  private _words: Array<Word>
+  private readonly _words: Array<Word>
   constructor(name: string, words: Array<Word>) {
     makeAutoObservable(this)
     this._name = name

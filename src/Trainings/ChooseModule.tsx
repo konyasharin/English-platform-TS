@@ -5,12 +5,14 @@ import FormsStore from "../store/FormsStore";
 import {FormNames} from "../initializeForms";
 import {editForm} from "../Auth/OpenAuth";
 import ModulesStore from "../store/ModulesStore";
+import TrainingsStore, {TrainingNames} from "../store/TrainingsStore";
 
 function onChooseModule(event: any, moduleName: string){
   ModulesStore.getInstance().currentModule = moduleName
   openForm()
   FormsStore.getInstance().changeStatus(FormNames.TRAINING_SETTING)
   editForm()
+  TrainingsStore.getInstance().getTraining(TrainingNames.LEARN)!.countOfWord = 1
 }
 
 

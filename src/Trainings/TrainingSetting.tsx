@@ -2,36 +2,25 @@ import Form from "../Form/Form";
 import Btn from "../Btns/Btn";
 import Minus from "../assets/icons/minus.png"
 import Plus from "../assets/icons/plus.png"
-import {useState} from "react";
-import ModulesStore from "../store/ModulesStore";
-import { useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import {closeForm} from "../Auth/CheckAuth";
+import {observer} from "mobx-react-lite";
+import ModulesStore from "../store/ModulesStore";
+import TrainingsStore, {TrainingNames} from "../store/TrainingsStore";
+import LearnTraining from "../store/LearnTraining";
 
-function TrainingSetting(){
-  const [countWords, setCountWords] = useState(1)
-  const maxCount = ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words.length
+const training: LearnTraining = TrainingsStore.getInstance().addTraining(new LearnTraining(TrainingNames.LEARN)) as LearnTraining
 
-  const increment = () => {
-    if(countWords < maxCount){
-      setCountWords(countWords + 1)
-    }
-  }
-
-  const decrement = () => {
-    if(countWords > 1){
-      setCountWords(countWords - 1)
-    }
-  }
-
+const TrainingSetting = observer(() => {
+  training.maxCountOfWord = ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words.length
   const navigate = useNavigate()
-
   const content = (
     <div className="count-words">
       <h4>Количество слов</h4>
       <div className="change-count">
-        <img src={Minus} alt="minus" onClick={decrement}/>
-        <Btn backgroundColor={"#4D4DFF"} color={"#ffffff"} text={`${countWords}`}/>
-        <img src={Plus} alt="plus" onClick={increment}/>
+        <img src={Minus} alt="minus" onClick={() => training.decrementCountOfWord()}/>
+        <Btn backgroundColor={"#4D4DFF"} color={"#ffffff"} text={`${training.countOfWord}`}/>
+        <img src={Plus} alt="plus" onClick={() => training.incrementCountOfWord()}/>
       </div>
     </div>
   )
@@ -42,6 +31,6 @@ function TrainingSetting(){
       navigate("/trainings/learn/training")
     }}/>
   )
-}
+})
 
 export default TrainingSetting
