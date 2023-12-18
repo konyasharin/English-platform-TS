@@ -98,3 +98,10 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+
+.cards input{
+    width: 560px;
+    font-size: 64px;
+    font-weight: 700;
+    text-align: center;
+}
