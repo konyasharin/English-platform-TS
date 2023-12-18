@@ -6,10 +6,9 @@ import {useNavigate} from "react-router-dom";
 import {closeForm} from "../Auth/CheckAuth";
 import {observer} from "mobx-react-lite";
 import ModulesStore from "../store/ModulesStore";
-import TrainingsStore, {TrainingNames} from "../store/TrainingsStore";
 import LearnTraining from "../store/LearnTraining";
 
-const training: LearnTraining = TrainingsStore.getInstance().addTraining(new LearnTraining(TrainingNames.LEARN)) as LearnTraining
+const training: LearnTraining = LearnTraining.getInstance() as LearnTraining
 
 const TrainingSetting = observer(() => {
   training.maxCountOfWord = ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words.length
@@ -27,6 +26,7 @@ const TrainingSetting = observer(() => {
 
   return(
     <Form title={"Настройка тренировки"} inputs={content} btnText={"Начать тренировку"} onClick={() => {
+      LearnTraining.getInstance().resetTraining()
       closeForm()
       navigate("/trainings/learn/training")
     }}/>
