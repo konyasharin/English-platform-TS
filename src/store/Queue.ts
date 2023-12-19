@@ -1,3 +1,4 @@
+// Модуль содержит класс Queue
 
 interface QueueInterface<T>{
   enqueue(item: T): void,
@@ -21,6 +22,7 @@ class Queue<T> implements QueueInterface<T>{
     return this._storage.shift()
   }
 
+  // Получение размера очереди
   size(): number {
     return this._storage.length
   }

@@ -1,3 +1,5 @@
+// Модуль содержит абстрактный класс Training
+
 import {action, computed, makeObservable, observable} from "mobx";
 
 abstract class Training{
@@ -21,12 +23,18 @@ abstract class Training{
     return this._countOfWord
   }
 
+  /*
+  Метод для увеличения числа слов в тренировке на 1
+   */
   public incrementCountOfWord(){
     if(this._countOfWord < this._maxCountOfWord){
       this._countOfWord += 1
     }
   }
 
+  /*
+  Метод для уменьшения числа слов в тренировке на 1
+   */
   public decrementCountOfWord() {
     if(this._countOfWord > 1){
       this._countOfWord -= 1

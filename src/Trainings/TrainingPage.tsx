@@ -1,3 +1,5 @@
+// Модуль содержит компонент TrainingPage
+
 import Card from "./Card";
 import Btn from "../Btns/Btn";
 import LearnTraining, {TrainingStatuses} from "../store/LearnTraining";

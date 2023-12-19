@@ -1,3 +1,5 @@
+// Данный модуль содержит класс TrainingStatuses
+
 import Training from "./Training";
 import {action, makeObservable, observable, override} from "mobx";
 import ModulesStore from "./ModulesStore";
@@ -45,6 +47,7 @@ class LearnTraining extends Training{
     this._correctAnswers = 0
   }
 
+  // Singleton
   public static getInstance(){
     if(this._instance == null){
       this._instance = new LearnTraining()
@@ -52,6 +55,10 @@ class LearnTraining extends Training{
     return this._instance
   }
 
+  /*
+   Метод для перемешивания слов и создания структуры данных ОЧЕРЕДЬ, которая хранит
+   уже перемешанные слова
+   */
   public createTrainingQueue(){
     const shuffler = new Shuffler()
 
@@ -64,6 +71,9 @@ class LearnTraining extends Training{
     })
   }
 
+  /*
+  Метод создает группу из 5 слов (мы показываем пользователю из всей очереди только 5 слов)
+   */
   public nextGroup(){
     let i: number
     for (i = 0; i < 5; i ++){
@@ -75,6 +85,9 @@ class LearnTraining extends Training{
     }
   }
 
+  /*
+  Метод берет следующее слово из очереди (которая на 5 слов)
+   */
   public nextWord() {
     this._currentWord = this._queueCurrentGroup.dequeue()
     if(this._currentWord !== undefined && this._currentStatus === TrainingStatuses.SHOW_WORDS){
@@ -90,6 +103,9 @@ class LearnTraining extends Training{
     return this._currentWord
   }
 
+  /*
+  Метод для переключения с просмотра слов на уже тренировку с этими словами
+   */
   public toggleToTrainingGroup(){
     // перемешивание уже для ввода пользователем ответов
     const shuffler = new Shuffler()
@@ -106,6 +122,9 @@ class LearnTraining extends Training{
     return this._currentWord
   }
 
+  /*
+  Метод для инициализации тренировки
+   */
   public initializeTraining(){
     this.createTrainingQueue()
     this.nextGroup()
@@ -117,6 +136,9 @@ class LearnTraining extends Training{
     return this._isInit
   }
 
+  /*
+  Метод для сброса всей тренировки
+   */
   public resetTraining(){
     this._queue = new Queue<Word>()
     this._queueCurrentGroup = new Queue<Word>()
@@ -127,6 +149,9 @@ class LearnTraining extends Training{
     return this._currentStatus
   }
 
+  /*
+  Метод для переключения статуса с SHOW_WORDS на WRITE_ANSWERS и наоборот
+   */
   public toggleStatus(){
     switch (this._currentStatus){
       case TrainingStatuses.SHOW_WORDS:
@@ -138,10 +163,16 @@ class LearnTraining extends Training{
     }
   }
 
+  /*
+  Установка статуса RESULTS
+   */
   public setFinishStatus(){
     this._currentStatus = TrainingStatuses.RESULTS
   }
 
+  /*
+  Метод для проверки правильности ввода перевода пользователем
+   */
   public checkAnswer(answer: string){
     if(this._currentWord?.translate === answer){
       this._correctAnswers += 1

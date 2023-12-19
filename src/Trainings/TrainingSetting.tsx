@@ -1,3 +1,5 @@
+// Модуль содержит компонент TrainingSetting
+
 import Form from "../Form/Form";
 import Btn from "../Btns/Btn";
 import Minus from "../assets/icons/minus.png"

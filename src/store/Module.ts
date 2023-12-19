@@ -1,3 +1,5 @@
+// Модуль содержит класс Module
+
 import {makeAutoObservable} from "mobx";
 import Word from "./Word";
 

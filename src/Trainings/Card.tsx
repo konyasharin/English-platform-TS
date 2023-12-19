@@ -1,3 +1,4 @@
+// Модуль содержит компонент Card
 
 interface CardInterface{
   text: string

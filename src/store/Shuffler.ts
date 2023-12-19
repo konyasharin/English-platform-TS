@@ -1,5 +1,9 @@
+// Метод содержит класс Shuffler
 
 class Shuffler{
+  /*
+  Метод для получения случайного числа от min до max
+   */
   private getRandomNumber(min: number, max: number) {
     min = Math.ceil(min)
     max = Math.floor(max)

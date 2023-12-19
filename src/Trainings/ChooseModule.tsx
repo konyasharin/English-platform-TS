@@ -1,3 +1,5 @@
+// Модуль содержит компонент ChooseModule
+
 import {createModuleComponents} from "../FoldersAndModules/Modules";
 import CheckAuth, {openForm} from "../Auth/CheckAuth";
 import {observer} from "mobx-react-lite";
