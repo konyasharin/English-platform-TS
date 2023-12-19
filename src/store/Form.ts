@@ -19,17 +19,21 @@ class Form{
     this._nameForm = name
   }
 
-  // Метод для добавления нового инпута (обычного) в форму
-  // input - экземпляр класса Input, который мы добавляем к форме
-  // return - инпут который мы добавили
+  /*
+  Метод для добавления нового инпута (обычного) в форму
+  input - экземпляр класса Input, который мы добавляем к форме
+  return - инпут который мы добавили
+  */
   public addInput(input: Input): Input {
     this._inputs.push(input)
     return this._inputs[this._inputs.length - 1]
   }
 
-  // Метод для добавления нового инпута с автозаполнением в форму
-  // input - экземпляр класса InputAutoFill, который мы добавляем к форме
-  // return - инпут который мы добавили
+  /*
+  Метод для добавления нового инпута с автозаполнением в форму
+  input - экземпляр класса InputAutoFill, который мы добавляем к форме
+  return - инпут который мы добавили
+  */
   public addInputAutoFill(input: InputAutoFill): InputAutoFill{
     this._inputsAutoFill.push(input)
     return this._inputsAutoFill[this._inputsAutoFill.length - 1]
@@ -39,21 +43,27 @@ class Form{
     return this._nameForm
   }
 
-  // Метод для получения всех инпутов (обычных) из формы
-  // return - массив инпутов (экземпляры класса Input)
+  /*
+  Метод для получения всех инпутов (обычных) из формы
+  return - массив инпутов (экземпляры класса Input)
+   */
   public getAllInputs(){
     return this._inputs
   }
 
-  // Метод для получения всех инпутов с автозаполнением из формы
-  // return - массив инпутов с автозаполнением (экземпляры класса InputAutoFill)
+  /*
+  Метод для получения всех инпутов с автозаполнением из формы
+  return - массив инпутов с автозаполнением (экземпляры класса InputAutoFill)
+   */
   public getAllInputsAutoFill(){
     return this._inputsAutoFill
   }
 
-  // Метод для получения инпута (обычного) из формы по имени инпута
-  // nameInput - имя инпута, который мы ищем
-  // return - найденный инпут (экземпляр класса Input) или undefined если инпут не был найден
+  /*
+  Метод для получения инпута (обычного) из формы по имени инпута
+  nameInput - имя инпута, который мы ищем
+  return - найденный инпут (экземпляр класса Input) или undefined если инпут не был найден
+   */
   public getInput(nameInput: string): Input | undefined{
     let i: number
     for (i = 0; i < this._inputs.length; i++){
@@ -63,8 +73,10 @@ class Form{
     }
   }
 
-  // Метод для проверки всех инпутов с автозаполнением на повторы (экземпляры класса InputAutoFill)
-  // return - true если есть повторы и false если нет повторов
+  /*
+  Метод для проверки всех инпутов с автозаполнением на повторы (экземпляры класса InputAutoFill)
+  return - true если есть повторы и false если нет повторов
+   */
   public checkRepeatAutoFillInputs(): boolean{
     let i: number
     let j: number
@@ -78,8 +90,10 @@ class Form{
     return false
   }
 
-  // Метод для проверки инпутов с автозаполнением на заполненность (экземпляры класса InputAutoFill)
-  // return - true если есть пустые инпуты или false если нет пустых инпутов
+  /*
+  Метод для проверки инпутов с автозаполнением на заполненность (экземпляры класса InputAutoFill)
+  return - true если есть пустые инпуты или false если нет пустых инпутов
+   */
   public checkEmptyAutoFillInputs(): boolean{
     let i: number
     for(i = 0; i < this.getAllInputsAutoFill().length; i ++){

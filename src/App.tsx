@@ -44,7 +44,7 @@ function App() {
             <Route path="/profile" element={<Profile img={AvatarImg}/>}/>
             <Route path="/createModule" element={<CreateModule />}/>
             <Route path="/trainings/learn/chooseModule" element={<ChooseModule />}/>
-            <Route path={"trainings/learn/training"} element={<TrainingPage />}/>
+            <Route path="/trainings/learn/training" element={<TrainingPage />}/>
           </Routes>
           <Footer/>
           <OpenAuth />

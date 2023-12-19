@@ -66,9 +66,10 @@ class LearnTraining extends Training{
     let words = [...ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words]
 
     words = shuffler.shuffle<Word>(words)
-    words.forEach(word => {
-      this._queue.enqueue(word)
-    })
+    let i: number
+    for(i = 0; i < this.countOfWord; i++){
+      this._queue.enqueue(words[i])
+    }
   }
 
   /*
@@ -143,6 +144,8 @@ class LearnTraining extends Training{
     this._queue = new Queue<Word>()
     this._queueCurrentGroup = new Queue<Word>()
     this._isInit = false
+    this._currentStatus = TrainingStatuses.SHOW_WORDS
+    this._correctAnswers = 0
   }
 
   public get currentStatus(){

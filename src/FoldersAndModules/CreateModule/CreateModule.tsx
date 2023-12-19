@@ -1,7 +1,9 @@
-// Данный компонент содержит страницу для создания модуля
-// а также методы, необходимые для этого (добавление слов(блоков слов) - addWord,
-// предлагание автозаполнения при вводе слов - editWord, проверка на правильность и
-// добавление модуля в базу данных - onCreateModule
+/*
+Данный компонент содержит страницу для создания модуля
+а также методы, необходимые для этого (добавление слов(блоков слов) - addWord,
+предлагание автозаполнения при вводе слов - editWord, проверка на правильность и
+добавление модуля в базу данных - onCreateModule
+*/
 
 import Input from "../../Input/Input";
 import FormsStore from "../../store/FormsStore";
@@ -44,9 +46,11 @@ export interface Word{
   translate: string
 }
 
-// Метод для создания инпутов для ввода нового слова и перевода для него
-// parent1 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода слова
-// parent2 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода перевода
+/*
+Метод для создания инпутов для ввода нового слова и перевода для него
+parent1 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода слова
+parent2 - экземпляр класса InputAutoFill, от которого мы будем создавать копию инпута для ввода перевода
+*/
 function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   const newWord = parent1.clone()
   newWord.name = `Word ${Math.ceil((FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.getAllInputsAutoFill().length + 1) / 2)}`
@@ -57,11 +61,13 @@ function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newTranslate)
 }
 
-// Метод для вытаскивания предполагаемо вводимого слова из базы данных
-// и предлагания этих переводов пользователю (добавление к экземпляру класса
-// InputAutoFill в поле autoFills всех предполагаемых слов)
-// event - event из JS
-// input - экземпляр класса InputAutoFill, в который мы будем передавать предполагаемые слова
+/*
+Метод для вытаскивания предполагаемо вводимого слова из базы данных
+и предлагания этих переводов пользователю (добавление к экземпляру класса
+InputAutoFill в поле autoFills всех предполагаемых слов)
+event - event из JS
+input - экземпляр класса InputAutoFill, в который мы будем передавать предполагаемые слова
+*/
 async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill){
   if (event.target.value !== ""){
     try {

@@ -67,14 +67,19 @@ const TrainingPage = observer(() => {
             training.toggleToTrainingGroup()
           }
         } else if(training.currentStatus === TrainingStatuses.WRITE_ANSWERS){
+          training.checkAnswer(answersInput.text)
+          answersInput.onChange("")
           if(j < training.countOfWord - 1){
-            training.checkAnswer(answersInput.text)
-            answersInput.onChange("")
             training.nextWord()
             j += 1
           } else{
             training.setFinishStatus()
+            i = 0
+            j = 0
           }
+        } else if(training.currentStatus === TrainingStatuses.RESULTS){
+          training.resetTraining()
+          navigate("/trainings")
         }
       }}/>
     </section>

@@ -23,14 +23,18 @@ class Input{
     this.placeholder = placeholder
   }
 
-  // Метод, который мы вызываем при onChange инпута (пользователь что-то вводит в инпут)
-  // value - новое значение text в инпуте
+  /*
+  Метод, который мы вызываем при onChange инпута (пользователь что-то вводит в инпут)
+  value - новое значение text в инпуте
+   */
   public onChange(value: string){
     this.text = value
   }
 
-  // Метод для клонирование инпута
-  // return - новый экземпляр класса Input
+  /*
+  Метод для клонирование инпута
+  return - новый экземпляр класса Input
+   */
   public clone(){
     return new Input(this.name, "", this.placeholder)
   }

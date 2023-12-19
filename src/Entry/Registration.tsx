@@ -1,5 +1,7 @@
-// Компонент содержит окно регистрации (потом будет передан в форму) и метод для
-// завершения решистрации
+/*
+Компонент содержит окно регистрации (потом будет передан в форму) и метод для
+завершения решистрации
+*/
 
 import Form from "../Form/Form";
 import Input from "../Input/Input";
@@ -8,11 +10,14 @@ import FormsStore from "../store/FormsStore";
 import {FormNames, InputNames} from "../initializeForms";
 import formsStore from "../store/FormsStore";
 import axios from "../axios";
+import {closeForm} from "../Auth/CheckAuth";
 
-// Метод для завершения регистрации
-// login - логин пользователя
-// password - пароль пользователя
-// repeatPassword - повтор пароля
+/*
+Метод для завершения регистрации
+login - логин пользователя
+password - пароль пользователя
+repeatPassword - повтор пароля
+*/
 async function endRegistration(login: string, password: string, repeatPassword: string){
   if (password === repeatPassword){
     try {
@@ -24,11 +29,13 @@ async function endRegistration(login: string, password: string, repeatPassword: 
           "Content-Type": "application/json"
         }
       })
+      alert("Регистрация прошла успешна")
+      closeForm()
     } catch (error: any){
-      console.log(error.response.data)
+      alert(error.response.data.message)
     }
   } else{
-    console.log("Пароли не совпадают!")
+    alert("Пароли не совпадают!")
   }
 }
 
