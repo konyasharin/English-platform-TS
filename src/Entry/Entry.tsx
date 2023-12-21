@@ -10,10 +10,12 @@ import axios from "../axios";
 import formsStore from "../store/FormsStore";
 import {closeForm} from "../Auth/CheckAuth";
 
-// Метод для завершения авторизации (устанавливаем токен для авторизации локально
-// у пользователя и закрываем форму(если авторизация прошла успешно))
-// login - логин пользователя
-// password - пароль пользователя
+/*
+Метод для завершения авторизации (устанавливаем токен для авторизации локально
+у пользователя и закрываем форму(если авторизация прошла успешно))
+login - логин пользователя
+password - пароль пользователя
+*/
 async function endEntry(login: string, password: string){
   try {
     await axios.post("auth/login", {
@@ -29,7 +31,7 @@ async function endEntry(login: string, password: string){
     //await tryGetUserData()
     closeForm()
   } catch (error: any){
-    console.log(error)
+    alert(error.response.data.message)
   }
 }
 

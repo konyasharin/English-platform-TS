@@ -23,8 +23,10 @@ class InputAutoFill extends Input{
     this._autoFills = []
   }
 
-  // Метод для добавления варианта для автозаполнения
-  // text - вариант для автозаполнения
+  /*
+  Метод для добавления варианта для автозаполнения
+  text - вариант для автозаполнения
+   */
   public addAutoFill(text: string){
     this._autoFills.push(new AutoFill(text))
   }
@@ -33,8 +35,10 @@ class InputAutoFill extends Input{
     return this._autoFills
   }
 
-  // Метод для клонирования экземпляра класса InputAutoFill
-  // return - экземпляр класса InputAutoFill
+  /*
+  Метод для клонирования экземпляра класса InputAutoFill
+  return - экземпляр класса InputAutoFill
+   */
   public clone(): InputAutoFill {
     return new InputAutoFill(this.name, "", this.placeholder)
   }
@@ -44,12 +48,14 @@ class InputAutoFill extends Input{
     this._autoFills = []
   }
 
-  // Метод, который мы вызываем при выборе одного из вариантов автозаполнения
-  // (данный инпут заполняется и вызывается метод autoFillTranslate)
-  // event - event из JS
-  // next - экземпляр класса InputAutoFill (в нашем случае это перевод, если мы автозаполнили слово,
-  // а в случае если мы заполняли перевод, то сюда ничего не передается)
-  // autoFillTranslate - метод для предложения вариантов автозаполнения перевода
+  /*
+  Метод, который мы вызываем при выборе одного из вариантов автозаполнения
+  (данный инпут заполняется и вызывается метод autoFillTranslate)
+  event - event из JS
+  next - экземпляр класса InputAutoFill (в нашем случае это перевод, если мы автозаполнили слово,
+  а в случае если мы заполняли перевод, то сюда ничего не передается)
+  autoFillTranslate - метод для предложения вариантов автозаполнения перевода
+   */
   public chooseAutoFill(event: any, next?: InputAutoFill, autoFillTranslate?: any){
     this.onChange(event.target.innerText.toLowerCase())
     this.cleanAutoFills()
@@ -58,9 +64,11 @@ class InputAutoFill extends Input{
     }
   }
 
-  // Метод для сравнения двух экземпляров класса InputAutoFill на равенство (поле text одинаковое)
-  // obj - экземпляр класса с которым мы сравниваем текущий экземпляр класса
-  // return - true если экземпляры класса равны, и false если не равны
+  /*
+  Метод для сравнения двух экземпляров класса InputAutoFill на равенство (поле text одинаковое)
+  obj - экземпляр класса с которым мы сравниваем текущий экземпляр класса
+  return - true если экземпляры класса равны, и false если не равны
+   */
   public equal(obj: InputAutoFill){
     return this.text === obj.text;
   }

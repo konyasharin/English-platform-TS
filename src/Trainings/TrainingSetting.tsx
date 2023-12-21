@@ -1,36 +1,38 @@
+// Модуль содержит компонент TrainingSetting
+
 import Form from "../Form/Form";
 import Btn from "../Btns/Btn";
 import Minus from "../assets/icons/minus.png"
 import Plus from "../assets/icons/plus.png"
-import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {closeForm} from "../Auth/CheckAuth";
+import {observer} from "mobx-react-lite";
+import ModulesStore from "../store/ModulesStore";
+import LearnTraining from "../store/LearnTraining";
 
-function TrainingSetting(){
-  const [countWords, setCountWords] = useState(1)
+const training: LearnTraining = LearnTraining.getInstance() as LearnTraining
 
-  const increment = () => {
-    setCountWords(countWords + 1)
-  }
-
-  const decrement = () => {
-    if(countWords > 1){
-      setCountWords(countWords - 1)
-    }
-  }
-
+const TrainingSetting = observer(() => {
+  training.maxCountOfWord = ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words.length
+  const navigate = useNavigate()
   const content = (
     <div className="count-words">
       <h4>Количество слов</h4>
       <div className="change-count">
-        <img src={Minus} alt="minus" onClick={decrement}/>
-        <Btn backgroundColor={"#4D4DFF"} color={"#ffffff"} text={`${countWords}`}/>
-        <img src={Plus} alt="plus" onClick={increment}/>
+        <img src={Minus} alt="minus" onClick={() => training.decrementCountOfWord()}/>
+        <Btn backgroundColor={"#4D4DFF"} color={"#ffffff"} text={`${training.countOfWord}`}/>
+        <img src={Plus} alt="plus" onClick={() => training.incrementCountOfWord()}/>
       </div>
     </div>
   )
 
   return(
-    <Form title={"Настройка тренировки"} inputs={content} btnText={"Начать тренировку"} onClick={() => console.log("start")}/>
+    <Form title={"Настройка тренировки"} inputs={content} btnText={"Начать тренировку"} onClick={() => {
+      LearnTraining.getInstance().resetTraining()
+      closeForm()
+      navigate("/trainings/learn/training")
+    }}/>
   )
-}
+})
 
 export default TrainingSetting

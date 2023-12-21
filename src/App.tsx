@@ -21,6 +21,7 @@ import FoldersImg from "./assets/header/folders.png"
 import ModulesImg from "./assets/header/modules.png"
 import ProfileImg from "./assets/header/profile.png"
 import AvatarImg from "./assets/avatar.png"
+import TrainingPage from "./Trainings/TrainingPage";
 
 
 initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
@@ -43,6 +44,7 @@ function App() {
             <Route path="/profile" element={<Profile img={AvatarImg}/>}/>
             <Route path="/createModule" element={<CreateModule />}/>
             <Route path="/trainings/learn/chooseModule" element={<ChooseModule />}/>
+            <Route path="/trainings/learn/training" element={<TrainingPage />}/>
           </Routes>
           <Footer/>
           <OpenAuth />

@@ -30,7 +30,7 @@ export function createModuleComponents(onClick?: any){
 
 const Modules = observer(() => {
   CheckAuth()
-  const modules = createModuleComponents()
+  const modules = createModuleComponents(() => alert("Данный функционал еще недоступен"))
   return(
     <section className="modules container">
       <Link to={"/createModule"} style={stylesLink}>

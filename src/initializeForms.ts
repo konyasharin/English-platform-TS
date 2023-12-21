@@ -7,7 +7,8 @@ export enum InputNames{
   LOGIN = "LOGIN",
   PASSWORD = "PASSWORD",
   REPEAT_PASSWORD = "REPEAT_PASSWORD",
-  MODULE_NAME = "MODULE_NAME"
+  MODULE_NAME = "MODULE_NAME",
+  ANSWER = "ANSWER"
 }
 
 export enum FormNames{

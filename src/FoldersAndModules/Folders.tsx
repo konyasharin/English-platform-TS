@@ -11,11 +11,11 @@ function Folders(){
   CheckAuth()
   return(
     <section className="container folders">
-      <Add className={"folder-add"} img={PlusOrangeImg} onClick={() => console.log(123)}/>
-      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"}/>
-      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"}/>
-      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"}/>
-      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"}/>
+      <Add className={"folder-add"} img={PlusOrangeImg} onClick={() => alert("Данный функционал еще недоступен")}/>
+      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
+      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
+      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
+      <Folder className={"folder"} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
     </section>
   )
 }

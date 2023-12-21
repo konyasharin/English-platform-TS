@@ -9,10 +9,12 @@ interface BtnProps{
   onClick?: any
 }
 
-// backgroundColor - цвет заднего фона кнопки
-// color - цвет текста в кнопке
-// text - текст в кнопке
-// onClick - функция которая вызывается при нажатии на кнопку
+/*
+backgroundColor - цвет заднего фона кнопки
+color - цвет текста в кнопке
+text - текст в кнопке
+onClick - функция которая вызывается при нажатии на кнопку
+*/
 function Btn({backgroundColor, color, text, onClick}: BtnProps){
   let styles = {
     btn: {
