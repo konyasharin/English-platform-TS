@@ -1,11 +1,9 @@
 // Компонент содержит один блок из компонента LastModules (последние модули)
 
-import "./LastModules.css"
-function Block(){
+import style from './Card.module.css'
+function Card(){
     return(
-        <div className="block">
-
-        </div>
+        <div className={style.card}></div>
     )
 }
-export default Block
+export default Card
