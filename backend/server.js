@@ -4,16 +4,16 @@
 import express from "express"
 import mongoose from "mongoose"
 import dotenv from 'dotenv'
-import checkAuth from "./backend/middleWares/checkAuth.js";
-import * as UserController from "./backend/controllers/UserController.js"
+import checkAuth from "./middleWares/checkAuth.js";
+import * as UserController from "./controllers/UserController.js"
 import cors from "cors"
-import * as WordController from "./backend/controllers/WordContoller.js"
-import * as ModuleController from "./backend/controllers/ModuleController.js"
+import * as WordController from "./controllers/WordContoller.js"
+import * as ModuleController from "./controllers/ModuleController.js"
 
 dotenv.config()
 const app = express()
 const PORT = process.env.PORT || 5000
-const CONNECTION_STRING = `mongodb+srv://admin:${encodeURIComponent(process.env.PASSWORD)}@cluster0.r5frqga.mongodb.net/EnglishPlatform?retryWrites=true&w=majority`
+const CONNECTION_STRING = process.env.DB_CONNECT
 
 app.use(express.json())
 app.use(cors())
