@@ -1,14 +1,13 @@
-/*
-Компонент, содержащий компонент выбора "авторизация или регистрация",
-потом он будет передан в форму
-*/
-
 import Btn from "../Btns/Btn";
 import "./Entry.css"
 import {editForm} from "../Auth/OpenAuth";
 import FormsStore from "../store/FormsStore";
 import {FormNames} from "../initializeForms";
 
+/**
+ * Компонент, содержащий выбор "авторизация или регистрация",
+ * потом он будет передан в форму
+ */
 function ChooseEntry(){
   return(
     <div className="container choose-entry">

@@ -1,5 +1,3 @@
-// Компонент содержит страницу с папками
-
 import Folder from "./Folder";
 import "./Folders.css"
 import Add from "./Add";
@@ -7,6 +5,9 @@ import CheckAuth from "../Auth/CheckAuth";
 import PlusOrangeImg from "../assets/icons/plus-orange.png"
 import FolderImg from "../assets/icons/folder.png"
 
+/**
+ * Компонент содержит страницу с папками
+ */
 function Folders(){
   CheckAuth()
   return(

@@ -1,8 +1,3 @@
-/*
-Данный компонент меняет состояние формы(выбор регистрации или входа/регистрация/вход)
-и передает форму через пропсы в компонент BlackBg
-*/
-
 import ChooseEntry from "../Entry/ChooseEntry";
 import BlackBg from "../Form/BlackBg";
 import Registration from "../Entry/Registration";
@@ -12,8 +7,9 @@ import {observer} from "mobx-react-lite";
 import {FormNames} from "../initializeForms";
 import TrainingSetting from "../Trainings/TrainingSetting";
 
-
-// Метод для изменения состояния формы авторизации
+/**
+ * Метод для изменения состояния формы авторизации
+ */
 export function editForm() {
   switch (FormsStore.getInstance().formStatus) {
     case FormNames.CHOOSE:
@@ -29,6 +25,10 @@ export function editForm() {
   }
 }
 
+/**
+ * Данный компонент меняет состояние формы(выбор регистрации или входа/регистрация/вход)
+ * и передает форму через пропсы в компонент BlackBg
+ */
 const OpenAuth = observer(() => {
   return(
     <BlackBg ChosenForm={editForm()}/>

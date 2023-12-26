@@ -1,5 +1,3 @@
-// Компонент содержит страницу профиля
-
 import Input from "../Input/Input";
 import MainBtn from "../Btns/MainBtn";
 import "./Profile.css"
@@ -7,6 +5,10 @@ import CheckAuth from "../Auth/CheckAuth";
 import User from "../store/User";
 import {observer} from "mobx-react-lite";
 
+/**
+ * Компонент содержит страницу профиля
+ * @param img путь до аватара пользователя
+ */
 const Profile = observer((props: { img: string | undefined; }) =>{
   CheckAuth()
   return(

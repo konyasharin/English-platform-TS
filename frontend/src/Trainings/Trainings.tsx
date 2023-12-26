@@ -1,8 +1,12 @@
-// Компонент содержит страницу "тренировки"
+//
 
 import Training from "./Training";
 import "./Trainings.css"
 import CheckAuth from "../Auth/CheckAuth";
+
+/**
+ * Компонент содержит страницу "тренировки"
+ */
 function Trainings(){
   CheckAuth()
   return(

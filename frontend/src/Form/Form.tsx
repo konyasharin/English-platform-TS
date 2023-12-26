@@ -1,5 +1,3 @@
-// Данный компонент содержит форму
-
 import "./Form.css"
 import Btn from "../Btns/Btn";
 
@@ -10,11 +8,12 @@ interface FormProps{
   onClick: () => void
 }
 
-/*
-title - заголовок в форме (h3)
-inputs - уже созданные компоненты Input
-btnText - текст в кнопке для отправки формы
-onClick - функция которая вызывается при нажатии на кнопку для отправки формы
+/**
+ * Данный компонент содержит форму
+ * @param title заголовок в форме (h3)
+ * @param inputs уже созданные компоненты Input
+ * @param btnText текст в кнопке для отправки формы
+ * @param onClick функция которая вызывается при нажатии на кнопку для отправки формы
  */
 function Form({title, inputs, btnText, onClick}: FormProps){
   return(

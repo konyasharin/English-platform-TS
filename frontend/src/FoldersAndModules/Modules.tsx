@@ -1,5 +1,3 @@
-// Компонент содержит страницу с модулями
-
 import Folder from "./Folder";
 import Add from "./Add";
 import CheckAuth from "../Auth/CheckAuth";
@@ -15,6 +13,10 @@ const stylesLink={
   width: "100%"
 }
 
+/**
+ * Метод создает компоненты Folder (модули)
+ * @param onClick функия, которая вызывается при нажатии на модуль
+ */
 export function createModuleComponents(onClick?: any){
   let modules: any[] = []
   let i: number
@@ -28,6 +30,9 @@ export function createModuleComponents(onClick?: any){
   return modules
 }
 
+/**
+ * Компонент содержит страницу с модулями
+ */
 const Modules = observer(() => {
   CheckAuth()
   const modules = createModuleComponents(() => alert("Данный функционал еще недоступен"))

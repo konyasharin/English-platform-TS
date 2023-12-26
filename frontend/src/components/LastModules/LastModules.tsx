@@ -1,10 +1,11 @@
-// Компонент содержит последние созданные модули на главной странице
-
 import style from "./LastModules.module.css"
 import ABCImg from "../../assets/main/abc.png"
 import Container from "../Container/Container";
 import Card from "./Card/Card";
 
+/**
+ * Компонент содержит последние созданные модули на главной странице
+ */
 function LastModules(){
   return (
     <section className={style.lastModules}>

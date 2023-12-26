@@ -1,4 +1,6 @@
-// Данный модуль инициализирует начальные формы (регистрация, вход)
+/**
+ * Данный модуль инициализирует начальные формы (регистрация, вход)
+ */
 
 import FormsStore from "./store/FormsStore";
 import Input from "./store/Input";
@@ -19,6 +21,10 @@ export enum FormNames{
   TRAINING_SETTING = "TRAINING_SETTING"
 }
 
+/**
+ * метод для инициализации начальных форм
+ * @param formStore экземпляр класса formsStore
+ */
 function initializeForms(formStore: FormsStore){
   const registrationForm = formStore.addForm(FormNames.REGISTRATION)
 

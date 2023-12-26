@@ -1,5 +1,3 @@
-// Компонент содержит "хедер" сайта
-
 import style from "./Header.module.css"
 import TrainingsImg from "../../assets/header/trainings.png";
 import FoldersImg from "../../assets/header/folders.png";
@@ -8,6 +6,9 @@ import ProfileImg from "../../assets/header/profile.png";
 import Refer from "../Refer/Refer";
 import Container from "../Container/Container";
 
+/**
+ * Компонент содержит "хедер" сайта
+ */
 function Header(){
     return (
         <header>

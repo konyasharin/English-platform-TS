@@ -1,5 +1,3 @@
-// Модуль содержит компонент TrainingPage
-
 import Card from "./Card";
 import Btn from "../Btns/Btn";
 import LearnTraining, {TrainingStatuses} from "../store/LearnTraining";
@@ -16,6 +14,9 @@ let i: number = 0
 let j: number = 0
 const answersInput = new InputClass(InputNames.ANSWER, "", "Перевод")
 
+/**
+ * Данный компонент содержит страницу с уже запущенной тренировкой-заучиванием
+ */
 const TrainingPage = observer(() => {
   const navigate = useNavigate()
   useEffect(() => {
@@ -52,10 +53,10 @@ const TrainingPage = observer(() => {
         {secondBlock}
       </div>
       {
-        /*
-        Здесь важно передавать метод nextWord как стрелочную функцию, в противном случае не будет ссылки на
-        объект (this = undefined, связано это с тем, что если мы используем не стрелочную функцию, то
-        передается сам метод класса без привязки к объекту)
+        /**
+         * Здесь важно передавать метод nextWord как стрелочную функцию, в противном случае не будет ссылки на
+         * объект (this = undefined, связано это с тем, что если мы используем не стрелочную функцию, то
+         * передается сам метод класса без привязки к объекту)
          */
       }
       <Btn backgroundColor={"#4D4DFF"} text={"продолжить"} color={"#ffffff"} onClick={() => {

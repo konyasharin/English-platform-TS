@@ -1,5 +1,3 @@
-// Модуль содержит компонент TrainingSetting
-
 import Form from "../Form/Form";
 import Btn from "../Btns/Btn";
 import Minus from "../assets/icons/minus.png"
@@ -12,6 +10,9 @@ import LearnTraining from "../store/LearnTraining";
 
 const training: LearnTraining = LearnTraining.getInstance() as LearnTraining
 
+/**
+ * Компонент содержит форму с настройкой тренировки
+ */
 const TrainingSetting = observer(() => {
   training.maxCountOfWord = ModulesStore.getInstance().getModule(ModulesStore.getInstance().currentModule)!.words.length
   const navigate = useNavigate()

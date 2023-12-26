@@ -1,5 +1,3 @@
-// Данный компонент содержит кнопку (не главную)
-
 import "./Btn.css"
 
 interface BtnProps{
@@ -9,12 +7,13 @@ interface BtnProps{
   onClick?: any
 }
 
-/*
-backgroundColor - цвет заднего фона кнопки
-color - цвет текста в кнопке
-text - текст в кнопке
-onClick - функция которая вызывается при нажатии на кнопку
-*/
+/**
+ * Данный компонент содержит кнопку (не главную)
+ * @param backgroundColor цвет заднего фона кнопки
+ * @param color цвет текста в кнопке
+ * @param text текст в кнопке
+ * @param onClick функция которая вызывается при нажатии на кнопку
+ */
 function Btn({backgroundColor, color, text, onClick}: BtnProps){
   let styles = {
     btn: {

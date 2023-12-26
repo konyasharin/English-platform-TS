@@ -1,11 +1,8 @@
-// Данный компонент содержит кнопку, которая заполняет инпуты при нажатии на нее
-
 import "./ChooseAutoFillBtn.css"
 import InputAutoFill from "../store/InputAutoFill";
 import axios from "../axios";
 import {ChangeEvent} from "react";
 import {WordInterface} from "../FoldersAndModules/CreateModule/CreateModule";
-
 
 interface ChooseAutoFillBtnInterface{
   text: string,
@@ -13,12 +10,11 @@ interface ChooseAutoFillBtnInterface{
   next?: InputAutoFill
 }
 
-
-/*
-Функция для вытягивания перевода слова из базы данных
-event - event из pure JS
-input - экземпляр класса InputAutoFill который должен содеражть перевод слова
-*/
+/**
+ * Функция для вытягивания перевода слова из базы данных
+ * @param event event из JS
+ * @param input экземпляр класса InputAutoFill который должен содеражть перевод слова
+ */
 async function autoFillTranslate(event: ChangeEvent<HTMLInputElement>, input: InputAutoFill){
   try{
     await axios.get(`/library/${event.target.innerText.toLowerCase()}`, {
@@ -40,13 +36,13 @@ async function autoFillTranslate(event: ChangeEvent<HTMLInputElement>, input: In
   }
 }
 
-/*
-Функция для вытягивания слова из базы данных по части слова и предложения вариантов для
-автозаполнения
-event - event из pure JS
-input - экземпляр класса InputAutoFill который мы будем заполнять
-next - экземпляр класса InputAutoFill, в котором должен содержаться перевод слова
-*/
+/**
+ * Данный компонент содержит кнопку, которая заполняет инпуты при нажатии на нее
+ * @param text текст в кнопке (вариант автозаполнения)
+ * @param input экземпляр класса InputAutoFill который мы будем заполнять
+ * @param next экземпляр класса InputAutoFill, в котором должен содержаться перевод слова
+ * @constructor
+ */
 function ChooseAutoFillBtn({text, input, next}: ChooseAutoFillBtnInterface){
   return(
     <button className={"autofill-btn"} onClick={

@@ -1,9 +1,10 @@
-// Компонент содержит "футер"
-
 import style from './Footer.module.css'
 import FooterImg from "../../assets/footer/footer-bg.png"
 import Container from "../Container/Container";
 
+/**
+ * Компонент содержит "футер"
+ */
 function Footer(){
   return(
     <footer className={style.footer}>

@@ -1,5 +1,3 @@
-// Компонент содержит главную страницу
-
 import style from "./MainPage.module.css"
 import MainBtn from "../../Btns/MainBtn";
 import LastModules from "../../components/LastModules/LastModules";
@@ -7,6 +5,9 @@ import ElephantImg from "../../assets/main/elephant.png"
 import {Link} from "react-router-dom";
 import Container from "../../components/Container/Container";
 
+/**
+ * Компонент содержит главную страницу
+ */
 function MainPage() {
     return (
         <>

@@ -1,8 +1,3 @@
-/*
-Компонент содержит окно регистрации (потом будет передан в форму) и метод для
-завершения решистрации
-*/
-
 import Form from "../Form/Form";
 import Input from "../Input/Input";
 import {observer} from "mobx-react-lite";
@@ -12,12 +7,12 @@ import formsStore from "../store/FormsStore";
 import axios from "../axios";
 import {closeForm} from "../Auth/CheckAuth";
 
-/*
-Метод для завершения регистрации
-login - логин пользователя
-password - пароль пользователя
-repeatPassword - повтор пароля
-*/
+/**
+ * Метод для завершения регистрации
+ * @param login логин пользователя
+ * @param password пароль пользователя
+ * @param repeatPassword повтор пароля
+ */
 async function endRegistration(login: string, password: string, repeatPassword: string){
   if (password === repeatPassword){
     try {
@@ -39,6 +34,10 @@ async function endRegistration(login: string, password: string, repeatPassword: 
   }
 }
 
+/**
+ * Компонент содержит окно регистрации (потом будет передан в форму) и метод для
+ * завершения решистрации
+ */
 const Registration = observer(() => {
   const registrationForm = FormsStore.getInstance().getForm(FormNames.REGISTRATION)!
 

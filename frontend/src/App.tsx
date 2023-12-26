@@ -1,5 +1,3 @@
-// Главный компонент приложения
-
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import ToMain from "./ToMain/ToMain";
@@ -19,8 +17,11 @@ import AvatarImg from "./assets/avatar.png"
 import TrainingPage from "./Trainings/TrainingPage";
 import Header from "./components/Header/Header";
 
-
 initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
+
+/**
+ * Главный компонент приложения
+ */
 function App() {
     return (
         <div className="App">

@@ -1,6 +1,3 @@
-// Компонент, содержащий окно входа (потом будет передано в форму),
-// а также метод для завершения авторизации
-
 import Input from "../Input/Input";
 import Form from "../Form/Form";
 import FormsStore from "../store/FormsStore";
@@ -10,12 +7,12 @@ import axios from "../axios";
 import formsStore from "../store/FormsStore";
 import {closeForm} from "../Auth/CheckAuth";
 
-/*
-Метод для завершения авторизации (устанавливаем токен для авторизации локально
-у пользователя и закрываем форму(если авторизация прошла успешно))
-login - логин пользователя
-password - пароль пользователя
-*/
+/**
+ * Метод для завершения авторизации (устанавливаем токен для авторизации локально
+ * у пользователя и закрываем форму(если авторизация прошла успешно))
+ * @param login логин пользователя
+ * @param password пароль пользователя
+ */
 async function endEntry(login: string, password: string){
   try {
     await axios.post("auth/login", {
@@ -35,6 +32,10 @@ async function endEntry(login: string, password: string){
   }
 }
 
+/**
+ * Компонент, содержащий окно входа (потом будет передано в форму),
+ * а также метод для завершения авторизации
+ */
 const Entry = observer(() => {
   const entryForm = FormsStore.getInstance().getForm(FormNames.ENTRY)!
 
