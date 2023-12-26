@@ -1,9 +1,13 @@
-// Модуль содержит контроллер для работы с модулями в базе данных
+/**
+ * Модуль содержит контроллер для работы с модулями в базе данных
+ */
 
 import UserModel from "../models/User.js"
 import ModuleModel from "../models/Module.js"
-import {response} from "express";
 
+/**
+ * Асинхронный метод для создания нового модуля в базе данных
+ */
 export const createModule = async (request, response) => {
     try{
         const user = await UserModel.findOne({userName: request.body.userName})

@@ -1,9 +1,15 @@
-// Модуль содержит контроллер для работы с пользователями в базе данных
+/**
+ * Модуль содержит контроллер для работы с пользователями в базе данных
+ */
 
 import bcrypt from "bcrypt";
 import UserModel from "../models/User.js";
 import jwt from "jsonwebtoken";
 
+/**
+ * Асинхронный метод для сохранения нового пользователя в базе данных
+ * (регистрация). Если пользователь с таким именем уже существует то новый пользователь не будет создан
+ */
 export const registration = async (request, response) => {
   try {
     const salt = await bcrypt.genSalt(10),
@@ -40,6 +46,9 @@ export const registration = async (request, response) => {
 
 }
 
+/**
+ * Асинхронный метод для взятия данных о пользователе из базы данных и создания токена для авторизации (вход)
+ */
 export const login = async (request, response) => {
   try {
     const user = await UserModel.findOne({userName: request.body.userName})
@@ -80,6 +89,9 @@ export const login = async (request, response) => {
   }
 }
 
+/**
+ * Асинхронный метод для получения данных о пользователе (выполняется после расшифровки токена в id пользователя)
+ */
 export const getMe = async (request, response) => {
   try {
     const user = await UserModel.findById(request.userId)

@@ -1,8 +1,16 @@
-// Метод содержит класс Shuffler
+/**
+ * Модуль содержит класс Shuffler
+ */
 
+/**
+ * Класс "перемешиватель" (перемешивание массивов)
+ */
 class Shuffler{
-  /*
-  Метод для получения случайного числа от min до max
+  /**
+   * Метод для получения случайного числа от min до max
+   * @param min начальное число диапазона
+   * @param max конечное число диапазона
+   * @private
    */
   private getRandomNumber(min: number, max: number) {
     min = Math.ceil(min)
@@ -10,7 +18,10 @@ class Shuffler{
     return Math.floor(Math.random() * (max - min) + min)
   }
 
-  // Метод для перетасовки массива при помощи алгоритма Фишера-Йетса
+  /**
+   * Метод для перетасовки массива при помощи алгоритма Фишера-Йетса
+   * @param array массив, который будет перемешан
+   */
   public shuffle<T>(array: T[]){
     let i: number
     let temp: T

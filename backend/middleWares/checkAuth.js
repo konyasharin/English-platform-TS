@@ -1,9 +1,15 @@
-// Модуль содержит middleWare для проверки аутентификации пользователя
+/**
+ * Модуль содержит middleWare для проверки аутентификации пользователя
+ */
 
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv"
 dotenv.config()
 
+/**
+ * middle ware для проверки правильности токена и расшифровки его в id пользователя,
+ * переходит потом к получению данных пользователя
+ */
 const checkAuth = (request, response, next) => {
   const token = (request.headers.authorization || "").replace(/Bearer\s?/, "")
 

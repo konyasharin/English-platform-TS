@@ -1,4 +1,6 @@
-// Модуль содержит схему модуля в базе данных
+/**
+ * Модуль содержит схему модуля в базе данных
+ */
 
 import {Schema, model} from "mongoose";
 import WordModuleModel from "./WordModule.js";

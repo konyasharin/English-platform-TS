@@ -1,4 +1,6 @@
-// Модуль содержит схему пользователя в базе данных
+/**
+ * Модуль содержит схему пользователя в базе данных
+ */
 
 import {Schema, model} from "mongoose"
 import ModuleSchema from "./Module.js"
