@@ -1,13 +1,13 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import ToMain from "./ToMain/ToMain";
+import ToMain from "./components/ToMain/ToMain";
 import Footer from "./components/Footer/Footer";
 import OpenAuth from "./Auth/OpenAuth";
 import MainPage from "./pages/MainPage/MainPage";
 import Trainings from "./Trainings/Trainings";
 import Folders from "./FoldersAndModules/Folders";
 import Modules from "./FoldersAndModules/Modules";
-import Profile from "./Profile/Profile";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import "./components/Header/Header.module.css"
 import FormsStore from "./store/FormsStore";
 import initializeForms from "./initializeForms";
@@ -33,7 +33,7 @@ function App() {
                     <Route path="/trainings" element={<Trainings/>}/>
                     <Route path="/folders" element={<Folders/>}/>
                     <Route path="/modules" element={<Modules/>}/>
-                    <Route path="/profile" element={<Profile img={AvatarImg}/>}/>
+                    <Route path="/profile" element={<ProfilePage img={AvatarImg}/>}/>
                     <Route path="/createModule" element={<CreateModule/>}/>
                     <Route path="/trainings/learn/chooseModule" element={<ChooseModule/>}/>
                     <Route path="/trainings/learn/training" element={<TrainingPage/>}/>

@@ -1,9 +1,9 @@
-.profile{
+.wrapper{
     display: flex;
-    margin-top: 90px;
+    padding: 90px;
 }
 
-.profile img{
+.img{
     width: 364px;
     height: 364px;
     border-radius: 50%;

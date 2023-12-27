@@ -1,4 +1,4 @@
-.to-main{
+.toMain{
     background-color: #974DFF;
     rotate: 90deg;
     display: inline-block;
@@ -10,7 +10,7 @@
     z-index: 1;
 }
 
-.to-main a{
+.toMain a{
     color: #ffffff;
     text-decoration: none;
 }

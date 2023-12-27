@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import "./ToMain.css"
+import style from "./ToMain.module.css"
 
 /**
  * Компонент содержит кнопку (блок) для возврата на главную страницу
@@ -7,7 +7,7 @@ import "./ToMain.css"
  */
 function ToMain(){
   return(
-    <div className="to-main">
+    <div className={style.toMain}>
       <Link to="/">
         <span>На главную</span>
       </Link>
