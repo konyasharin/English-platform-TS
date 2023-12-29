@@ -1,4 +1,4 @@
-import "./Folders.css"
+import "./Folders.module.css"
 
 interface FolderProps{
   className: string,

@@ -1,4 +1,4 @@
-import {createModuleComponents} from "../FoldersAndModules/Modules";
+import {createModuleComponents} from "../pages/ModulesPage/ModulesPage";
 import CheckAuth, {openForm} from "../Auth/CheckAuth";
 import {observer} from "mobx-react-lite";
 import FormsStore from "../store/FormsStore";

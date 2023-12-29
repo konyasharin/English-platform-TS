@@ -1,4 +1,4 @@
-import "./Folders.css"
+import "./Folders.module.css"
 interface AddProps{
   className: string,
   img: string,

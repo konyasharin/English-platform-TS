@@ -15,13 +15,6 @@
     background-color: #E2E2FF;
 }
 
-.folders, .modules{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 90px;
-}
-
 .folder img, .module img{
     width: 200px;
     height: 200px;
@@ -31,7 +24,7 @@
     text-align: center;
 }
 
-.folder-add, .module-add{
+.folderAdd, .moduleAdd{
     background-color: #FFF4E3;
     height: 15px;
     width: 100%;
@@ -44,11 +37,11 @@
     align-items: center;
 }
 
-.module-add{
+.moduleAdd{
     background-color: #E2E2FF;
 }
 
-.folder-add::after, .module-add::after{
+.folderAdd::after, .moduleAdd::after{
     content: "";
     display: block;
     width: 40px;
@@ -62,6 +55,6 @@
     z-index: -1;
 }
 
-.module-add::after{
+.moduleAdd::after{
     background-color: #E2E2FF;
 }

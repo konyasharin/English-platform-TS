@@ -1,0 +1,14 @@
+.trainingLearnPage{
+    margin-top: 90px;
+}
+
+.trainingLearnPage h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.trainingLearnPage button{
+    display: block;
+    margin: 0 auto;
+    margin-top: 50px;
+}
