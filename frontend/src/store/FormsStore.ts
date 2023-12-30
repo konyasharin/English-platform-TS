@@ -15,6 +15,8 @@ class FormsStore{
   private _formStatus: string;
   // экземпляр класса FormsStore (для реализации паттерна Singleton)
   private static _instance: FormsStore
+  // статус черного фона true - активен false - выключен
+  private _blackBgStatus: boolean
 
   /**
    * @constructor конструктор приватный так как мы используем паттерн Singleton для данного класса
@@ -24,6 +26,7 @@ class FormsStore{
     makeAutoObservable(this);
     this._forms = []
     this._formStatus = "";
+    this._blackBgStatus = false
   }
 
   /**
@@ -75,6 +78,27 @@ class FormsStore{
    */
   public get formStatus(){
     return this._formStatus
+  }
+
+  /**
+   * Метод для активации компонента blackBg (форма с затемненным фоном)
+   */
+  public activateBlackBg(){
+    this._blackBgStatus = true
+  }
+
+  /**
+   * Метод для деактивации компонента blackBg (форма с затемненным фоном)
+   */
+  public deactivateBlackBg(){
+    this._blackBgStatus = false
+  }
+
+  /**
+   * @return статус blackBg (включена ли форма с затемнением заднего фона)
+   */
+  public get blackBgStatus(){
+    return this._blackBgStatus
   }
 }
 

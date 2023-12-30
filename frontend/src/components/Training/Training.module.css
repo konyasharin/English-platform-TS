@@ -1,0 +1,23 @@
+.trainingBlock{
+    width: 560px;
+    display: flex;
+    padding: 19px 30px;
+    border-radius: 8px;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.trainingBlock .btn{
+    margin-top: auto;
+}
+
+.trainingBlock span{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.trainingBlock a{
+    margin-top: auto;
+}

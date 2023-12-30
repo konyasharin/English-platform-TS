@@ -1,0 +1,14 @@
+.card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 560px;
+    padding: 75px 10px;
+    border: 2px solid black;
+    border-radius: 8px;
+    background-color: #E2E2FF;
+    font-size: 64px;
+    font-weight: 700;
+    text-align: center;
+    overflow-wrap: anywhere;
+}

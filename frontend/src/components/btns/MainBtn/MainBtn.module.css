@@ -1,0 +1,16 @@
+.mainBtn{
+    border: 5px solid #4D4DFF;
+    border-radius: 8px;
+    padding: 15px 20px;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: .3s all;
+}
+
+.mainBtn:hover{
+    background-color: #4D4DFF;
+}
+
+main .mainBtn{
+    margin-top: 60px;
+}

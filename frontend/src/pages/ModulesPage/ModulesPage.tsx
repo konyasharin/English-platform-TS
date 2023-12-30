@@ -1,6 +1,6 @@
 import Folder from "../../components/Folder/Folder";
 import Add from "../../components/Add/Add";
-import CheckAuth from "../../Auth/CheckAuth";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
 import {Link} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import ModulesStore from "../../store/ModulesStore";

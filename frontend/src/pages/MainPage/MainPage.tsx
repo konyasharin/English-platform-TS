@@ -1,5 +1,5 @@
 import style from "./MainPage.module.css"
-import MainBtn from "../../Btns/MainBtn";
+import MainBtn from "../../components/btns/MainBtn/MainBtn";
 import LastModules from "../../components/LastModules/LastModules";
 import ElephantImg from "../../assets/main/elephant.png"
 import {Link} from "react-router-dom";

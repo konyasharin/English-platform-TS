@@ -1,0 +1,14 @@
+.chooseModule{
+    margin-top: 90px;
+    text-align: center;
+}
+
+.chooseModule h2{
+    margin-bottom: 50px;
+}
+
+.chooseModule .modules{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

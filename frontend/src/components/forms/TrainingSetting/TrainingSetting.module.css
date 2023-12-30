@@ -1,0 +1,24 @@
+.changeCount img{
+    cursor: pointer;
+}
+
+.changeCount .btn{
+    cursor: auto;
+    padding: 12px 36px;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.changeCount{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countWords{
+    display: flex;
+    margin-bottom: 50px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
