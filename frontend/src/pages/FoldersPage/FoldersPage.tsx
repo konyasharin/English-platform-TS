@@ -6,10 +6,7 @@ import PlusOrangeImg from "../../assets/icons/plus-orange.png"
 import FolderImg from "../../assets/icons/folder.png"
 import styles from "./FoldersPage.module.css"
 import Container from "../../components/Container/Container";
-
-function addFolder(){
-
-}
+import {Link} from "react-router-dom";
 
 /**
  * Компонент содержит страницу с папками
@@ -19,7 +16,9 @@ function FoldersPage(){
   return(
     <Container>
       <section className={styles.folders}>
-        <Add className={styles.folderAdd} img={PlusOrangeImg} onClick={addFolder}/>
+        <Link to={"/createFolder"}>
+          <Add className={styles.folderAdd} img={PlusOrangeImg}/>
+        </Link>
         <Folder className={styles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
         <Folder className={styles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
         <Folder className={styles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
