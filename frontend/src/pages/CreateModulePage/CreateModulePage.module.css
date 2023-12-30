@@ -1,0 +1,23 @@
+.createModule{
+    text-align: center;
+}
+
+.createModule input[placeholder="Название модуля"]{
+    margin-bottom: 70px;
+    width: 100%;
+    margin-top: 75px;
+    text-align: center;
+}
+
+.moduleAdd{
+    composes: moduleAdd from "../../components/Add/Add.module.css";
+    margin-top: 20px;
+}
+
+.createModule .btn{
+    margin-top: 30px;
+}
+
+.createModule input{
+    width: 100%;
+}

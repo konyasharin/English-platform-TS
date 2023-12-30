@@ -11,7 +11,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import "./components/Header/Header.module.css"
 import FormsStore from "./store/FormsStore";
 import initializeForms from "./initializeForms";
-import CreateModule from "./FoldersAndModules/CreateModule/CreateModule";
+import CreateModulePage from "./pages/CreateModulePage/CreateModulePage";
 import ChooseModule from "./Trainings/ChooseModule";
 import AvatarImg from "./assets/avatar.png"
 import TrainingLearnPage from "./pages/TrainingPages/TrainingLearnPage/TrainingLearnPage";
@@ -34,7 +34,7 @@ function App() {
                     <Route path="/folders" element={<FoldersPage/>}/>
                     <Route path="/modules" element={<ModulesPage/>}/>
                     <Route path="/profile" element={<ProfilePage img={AvatarImg}/>}/>
-                    <Route path="/createModule" element={<CreateModule/>}/>
+                    <Route path="/createModule" element={<CreateModulePage/>}/>
                     <Route path="/trainings/learn/chooseModule" element={<ChooseModule/>}/>
                     <Route path="/trainings/learn/training" element={<TrainingLearnPage/>}/>
                 </Routes>

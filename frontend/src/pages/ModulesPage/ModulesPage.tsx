@@ -1,13 +1,12 @@
 import Folder from "../../FoldersAndModules/Folder";
-import Add from "../../FoldersAndModules/Add";
+import Add from "../../components/Add/Add";
 import CheckAuth from "../../Auth/CheckAuth";
 import {Link} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import ModulesStore from "../../store/ModulesStore";
 import ModulesImg from "../../assets/icons/module.png"
 import PlusBlueImg from "../../assets/icons/plus-blue.png"
-import styles from "../FoldersPage/FoldersPage.module.css"
-import stylesForComponents from "../../FoldersAndModules/Folders.module.css"
+import styles from "./ModulesPage.module.css"
 import Container from "../../components/Container/Container";
 
 
@@ -25,7 +24,7 @@ export function createModuleComponents(onClick?: any){
   let i: number
   for (i = 0; i < ModulesStore.getInstance().modules.length; i++){
     modules.push(
-      <Folder className={stylesForComponents.module} img={ModulesImg} alt={"module"}
+      <Folder className={styles.module} img={ModulesImg} alt={"module"}
               title={ModulesStore.getInstance().modules[i].name} key={i}
               onClick={onClick}/>
     )
@@ -41,9 +40,9 @@ const ModulesPage = observer(() => {
   const modules = createModuleComponents(() => alert("Данный функционал еще недоступен"))
   return(
     <Container>
-      <section className={styles.folders}>
+      <section className={styles.modules}>
         <Link to={"/createModule"} style={stylesLink}>
-          <Add className={stylesForComponents.moduleAdd} img={PlusBlueImg}/>
+          <Add className={styles.moduleAdd} img={PlusBlueImg}/>
         </Link>
         {modules}
       </section>

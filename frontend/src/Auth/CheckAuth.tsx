@@ -4,7 +4,7 @@ import User from "../store/User";
 import FormsStore from "../store/FormsStore"
 import {FormNames} from "../initializeForms";
 import axios from "../axios";
-import {ModuleInterface} from "../FoldersAndModules/CreateModule/CreateModule";
+import {ModuleInterface} from "../pages/CreateModulePage/CreateModulePage";
 import ModulesStore from "../store/ModulesStore";
 import Module from "../store/Module";
 import Word from "../store/Word";

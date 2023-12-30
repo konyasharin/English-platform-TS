@@ -2,31 +2,8 @@
     display: flex;
 }
 
-.create-modules input[placeholder="Название модуля"]{
-    margin-bottom: 70px;
-    width: 100%;
-    margin-top: 75px;
-    text-align: center;
-}
-
-.create-modules .module-add{
-    margin-top: 20px;
-}
-
 .word-and-translate{
     margin-bottom: 20px;
-}
-
-.create-modules{
-    text-align: center;
-}
-
-.create-modules .btn{
-    margin-top: 30px;
-}
-
-.create-modules input{
-    width: 100%;
 }
 
 .autofill-block{
