@@ -4,14 +4,13 @@ import ClassInput from "../../store/Input"
 import Add from "../../components/Add/Add";
 import {observer} from "mobx-react-lite";
 import {FormNames, InputNames} from "../../initializeForms";
-import WordAndTranslate from "../../FoldersAndModules/CreateModule/WordAndTranslate";
-import "../../FoldersAndModules/CreateModule/CreateModule.css"
+import WordAndTranslate from "../../components/WordAndTranslate/WordAndTranslate";
 import Btn from "../../Btns/Btn";
 import ClassInputAutoFill from "../../store/InputAutoFill";
 import {ChangeEvent} from "react";
 import axios from "../../axios";
 import InputAutoFill from "../../Input/InputAutoFill";
-import AutoFillBlock from "../../FoldersAndModules/CreateModule/AutoFillBlock";
+import AutoFillBlock from "../../components/AutoFillBlock/AutoFillBlock";
 import ChooseAutoFillBtn from "../../Btns/ChooseAutoFillBtn";
 import User from "../../store/User";
 import CheckAuth from "../../Auth/CheckAuth";

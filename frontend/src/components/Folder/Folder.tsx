@@ -1,5 +1,3 @@
-import "./Folders.module.css"
-
 interface FolderProps{
   className: string,
   img: string,

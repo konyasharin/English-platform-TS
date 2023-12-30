@@ -1,5 +1,6 @@
-import "./CreateModule.css"
-interface WorkAndTranslateInterface{
+import styles from "./WordAndTranslate.module.css"
+
+interface WordAndTranslateInterface{
   word: any,
   translate: any
 }
@@ -11,9 +12,9 @@ interface WorkAndTranslateInterface{
  * @param translate компонент AutoFillBlock с инпутом, куда вводится перевод
  * @constructor
  */
-function WordAndTranslate({word, translate}: WorkAndTranslateInterface){
+function WordAndTranslate({word, translate}: WordAndTranslateInterface){
   return(
-    <div className="word-and-translate">
+    <div className={styles.wordAndTranslate}>
       {word}
       {translate}
     </div>

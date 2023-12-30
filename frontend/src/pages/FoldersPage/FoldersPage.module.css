@@ -5,10 +5,7 @@
     margin-top: 90px;
 }
 
-.folder{
-    composes: folder from "../../FoldersAndModules/Folders.module.css";
-}
-
-.folderAdd{
-    composes: folderAdd from "../../components/Add/Add.module.css"
+.stylesLink{
+    display: block;
+    width: 100%;
 }

@@ -1,0 +1,7 @@
+.autoFillBlock{
+    width: 560px;
+}
+
+.autoFillBlock:nth-child(odd){
+    margin-right: 20px;
+}
