@@ -1,0 +1,9 @@
+.createFolder{
+    margin-top: 90px;
+}
+
+.createFolder input[placeholder="Название папки"]{
+    margin-bottom: 70px;
+    width: 100%;
+    text-align: center;
+}

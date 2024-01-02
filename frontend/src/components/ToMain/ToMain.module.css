@@ -6,11 +6,11 @@
     border-radius: 50px 50px 0 0;
     position: fixed;
     left: -115px;
-    top: 305px;
+    top: 285px;
     z-index: 1;
 }
 
-.toMain a{
+.link{
     color: #ffffff;
     text-decoration: none;
 }

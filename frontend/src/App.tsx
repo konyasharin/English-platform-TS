@@ -16,6 +16,7 @@ import ChooseModulePage from "./pages/ChooseModulePage/ChooseModulePage";
 import AvatarImg from "./assets/avatar.png"
 import TrainingLearnPage from "./pages/trainingPages/TrainingLearnPage/TrainingLearnPage";
 import Header from "./components/Header/Header";
+import CreateFolderPage from "./pages/CreateFolderPage/CreateFolderPage";
 
 initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
 
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/createModule" element={<CreateModulePage/>}/>
                     <Route path="/trainings/learn/chooseModule" element={<ChooseModulePage/>}/>
                     <Route path="/trainings/learn/training" element={<TrainingLearnPage/>}/>
+                    <Route path="/createFolder" element={<CreateFolderPage/>}/>
                 </Routes>
             </main>
             <Footer/>

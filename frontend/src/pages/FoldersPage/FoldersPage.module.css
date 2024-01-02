@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-top: 90px;
+    margin-top: 102px; /* 90+12 */
 }
 
 .stylesLink{
