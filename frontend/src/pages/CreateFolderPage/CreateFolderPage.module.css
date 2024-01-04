@@ -7,3 +7,15 @@
     width: 100%;
     text-align: center;
 }
+
+.foldersBlock{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 30px; /* 50px - 20px */
+}

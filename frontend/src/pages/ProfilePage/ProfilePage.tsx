@@ -1,7 +1,6 @@
 import Input from "../../components/inputs/Input/Input";
 import MainBtn from "../../components/btns/MainBtn/MainBtn";
 import style from "./ProfilePage.module.css"
-import CheckAuth from "../../components/CheckAuth/CheckAuth";
 import User from "../../store/User";
 import {observer} from "mobx-react-lite";
 import Container from "../../components/Container/Container";
@@ -11,7 +10,6 @@ import Container from "../../components/Container/Container";
  * @param img путь до аватара пользователя
  */
 const ProfilePage = observer((props: { img: string | undefined; }) =>{
-  CheckAuth()
   return(
     <section className={style.profile}>
       <Container>

@@ -13,7 +13,6 @@ import InputAutoFill from "../../components/inputs/InputAutoFill/InputAutoFill";
 import AutoFillBlock from "../../components/AutoFillBlock/AutoFillBlock";
 import ChooseAutoFillBtn from "../../components/btns/ChooseAutoFillBtn/ChooseAutoFillBtn";
 import User from "../../store/User";
-import CheckAuth from "../../components/CheckAuth/CheckAuth";
 import ModulesStore from "../../store/ModulesStore";
 import Module from "../../store/Module";
 import ClassWord from "../../store/Word";
@@ -157,8 +156,6 @@ const firstTranslateInput = createModuleForm.addInputAutoFill(
  * Данный компонент содержит страницу для создания модуля
  */
 const CreateModulePage = observer(() => {
-  CheckAuth()
-
   /**
    * Вытаскиваем из формы все инпуты (не экземпляры класса Input!!! а экземпляры класса InputAutoFill)
    * и на основе данных в этих экземплярах создаем уже функциональные реакт-кмпоненты InputAutoFill

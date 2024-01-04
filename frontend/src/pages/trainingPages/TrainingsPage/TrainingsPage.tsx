@@ -1,5 +1,4 @@
 import Training from "../../../components/Training/Training";
-import CheckAuth from "../../../components/CheckAuth/CheckAuth";
 import styles from "./TrainingsPage.module.css"
 import Container from "../../../components/Container/Container";
 
@@ -7,7 +6,6 @@ import Container from "../../../components/Container/Container";
  * Компонент содержит страницу "тренировки"
  */
 function TrainingsPage(){
-  CheckAuth()
   return(
     <Container>
       <section className={`container ${styles.trainingsPage}`}>

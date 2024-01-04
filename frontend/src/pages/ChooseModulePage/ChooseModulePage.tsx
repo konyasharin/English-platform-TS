@@ -1,5 +1,5 @@
 import {createModuleComponents} from "../ModulesPage/ModulesPage";
-import CheckAuth, {openForm} from "../../components/CheckAuth/CheckAuth";
+import {openForm} from "../../components/CheckAuth/CheckAuth";
 import {observer} from "mobx-react-lite";
 import FormsStore from "../../store/FormsStore";
 import {FormNames} from "../../initializeForms";
@@ -26,7 +26,6 @@ function onChooseModule(event: any, moduleName: string){
  * Компонент содержит страницу выбора модуля для тренировки
  */
 const ChooseModulePage = observer(() => {
-  CheckAuth()
   const modules = createModuleComponents(onChooseModule)
 
   return(

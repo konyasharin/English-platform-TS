@@ -1,7 +1,6 @@
 import Folder from "../../components/Folder/Folder";
 import "../../components/Folder/Folder.module.css"
 import Add from "../../components/Add/Add";
-import CheckAuth from "../../components/CheckAuth/CheckAuth";
 import PlusOrangeImg from "../../assets/icons/plus-orange.png"
 import FolderImg from "../../assets/icons/folder.png"
 import styles from "./FoldersPage.module.css"
@@ -14,7 +13,6 @@ import {Link} from "react-router-dom";
  * Компонент содержит страницу с папками
  */
 function FoldersPage(){
-  CheckAuth()
   return(
     <Container>
       <section className={styles.folders}>

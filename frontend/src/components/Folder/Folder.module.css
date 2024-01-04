@@ -9,13 +9,14 @@
     cursor: pointer;
     flex-direction: column;
     overflow-wrap: anywhere;
+    position: relative;
 }
 
 .module{
     background-color: #E2E2FF;
 }
 
-.folder img, .module img{
+.folderImg{
     width: 200px;
     height: 200px;
 }

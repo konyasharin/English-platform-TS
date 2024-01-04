@@ -17,6 +17,7 @@ import AvatarImg from "./assets/avatar.png"
 import TrainingLearnPage from "./pages/trainingPages/TrainingLearnPage/TrainingLearnPage";
 import Header from "./components/Header/Header";
 import CreateFolderPage from "./pages/CreateFolderPage/CreateFolderPage";
+import CheckAuth from "./components/CheckAuth/CheckAuth";
 
 initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
 
@@ -24,6 +25,7 @@ initializeForms(FormsStore.getInstance()) // Нужно инициализиро
  * Главный компонент приложения
  */
 function App() {
+    CheckAuth()
     return (
         <div className="App">
             <Header/>
