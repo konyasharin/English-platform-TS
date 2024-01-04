@@ -9,6 +9,9 @@ import ModulesStore from "../../store/ModulesStore";
 import Module from "../../store/Module";
 import Word from "../../store/Word";
 import blackBgStyles from "../BlackBg/BlackBg.module.css"
+import {FolderInterface} from "../../pages/CreateFolderPage/CreateFolderPage";
+import FoldersStore from "../../store/FoldersStore";
+import Folder from "../../store/Folder";
 
 /**
  * Метод для вытягивания информации о пользователе (если присутствует токен авторизации)
@@ -30,6 +33,10 @@ export async function tryGetUserData(){
               words.push(new Word(word.word, word.translate))
             })
             ModulesStore.getInstance().addModule(new Module(module.name, words))
+          })
+          data.folders.forEach((folder: FolderInterface) => {
+            FoldersStore.getInstance().addFolder(new Folder(folder.name,
+              folder.modules.map(moduleName => ModulesStore.getInstance().getModule(moduleName)!)))
           })
         }
       })

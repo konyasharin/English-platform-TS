@@ -11,6 +11,7 @@ import * as UserController from "./controllers/UserController.js"
 import cors from "cors"
 import * as WordController from "./controllers/WordContoller.js"
 import * as ModuleController from "./controllers/ModuleController.js"
+import * as FolderController from "./controllers/FolderController.js"
 
 /**
  * Функция создает строку для подключения к mongodb (возникла необходимость создания данной функции
@@ -55,3 +56,5 @@ app.get("/auth/me", checkAuth, UserController.getMe)
 app.get("/library/:partWord", WordController.getWord)
 
 app.post("/modules/create", ModuleController.createModule)
+
+app.post("/folders/create", FolderController.createFolder)

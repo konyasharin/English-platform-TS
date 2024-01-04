@@ -8,24 +8,35 @@ import folderStyles from "../../components/Folder/Folder.module.css"
 import folderAddStyles from "../../components/Add/Add.module.css"
 import Container from "../../components/Container/Container";
 import {Link} from "react-router-dom";
+import FoldersStore from "../../store/FoldersStore";
+import {ReactNode} from "react";
+import {observer} from "mobx-react-lite";
+
+function createFolderComponents(){
+  const folders = new Array<ReactNode>()
+  let i: number
+  for (i = 0; i < FoldersStore.getInstance().folders.length; i++){
+    folders.push(<Folder className={folderStyles.folder} img={FolderImg} alt={"folder"}
+                         title={FoldersStore.getInstance().folders[i].name}
+                         onClick={() => alert("Данный функционал еще недоступен")} key={i}/>)
+  }
+  return folders
+}
 
 /**
  * Компонент содержит страницу с папками
  */
-function FoldersPage(){
+const FoldersPage = observer(() => {
   return(
     <Container>
       <section className={styles.folders}>
         <Link to={"/createFolder"} className={styles.stylesLink}>
           <Add className={folderAddStyles.folderAdd} img={PlusOrangeImg}/>
         </Link>
-        <Folder className={folderStyles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
-        <Folder className={folderStyles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
-        <Folder className={folderStyles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
-        <Folder className={folderStyles.folder} img={FolderImg} alt={"folder"} title={"test"} onClick={() => alert("Данный функционал еще недоступен")}/>
+        {createFolderComponents()}
       </section>
     </Container>
   )
-}
+})
 
 export default FoldersPage
