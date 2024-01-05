@@ -55,6 +55,13 @@ class Module{
   public get isAdd(){
     return this._isAdd
   }
+
+  /**
+   * Метод делает поле _isAdd равным false (нужно для сброса после создания папки)
+   */
+  public clearIsAdd(){
+    this._isAdd = false
+  }
 }
 
 export default Module
