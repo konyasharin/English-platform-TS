@@ -1,8 +1,9 @@
 import styles from "./WordAndTranslate.module.css"
+import {ReactNode} from "react";
 
 interface WordAndTranslateInterface{
-  word: any,
-  translate: any
+  word: ReactNode,
+  translate: ReactNode
 }
 
 /**

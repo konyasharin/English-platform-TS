@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 import styles from "./Folder.module.css"
 
 interface FolderProps{
@@ -7,7 +7,7 @@ interface FolderProps{
   title: string,
   alt: string,
   children?: ReactNode,
-  onClick?: any
+  onClick?: (event: React.MouseEvent, title: string) => void
 }
 
 /**

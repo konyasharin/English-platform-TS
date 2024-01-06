@@ -1,9 +1,9 @@
 import styles from "./Btn.module.css"
 
 interface BtnProps{
-  backgroundColor: string | undefined,
-  color: string | undefined,
-  text: string | undefined,
+  backgroundColor: string,
+  color: string,
+  text: string,
   onClick?: any
   className?: string
 }

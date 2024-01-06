@@ -1,12 +1,13 @@
 import styles from "../Input/Input.module.css"
 import FormsStore from "../../../store/FormsStore";
 import InputAutoFillClass from "../../../store/InputAutoFill";
+import React from "react";
 
 interface InputProps{
   placeholder?: string,
   value?: string,
-  edit?: InputAutoFillClass,
-  onChange: any,
+  edit: InputAutoFillClass,
+  onChange: (event: React.ChangeEvent<HTMLInputElement>, edit: InputAutoFillClass, prev?: InputAutoFillClass) => Promise<void>,
   prev?: InputAutoFillClass
 }
 

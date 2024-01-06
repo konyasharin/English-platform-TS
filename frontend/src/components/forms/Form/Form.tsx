@@ -1,10 +1,11 @@
 import styles from "./Form.module.css"
 import Btn from "../../btns/Btn/Btn";
 import Container from "../../Container/Container";
+import {ReactNode} from "react";
 
 interface FormProps{
   title: string,
-  inputs: any,
+  inputs: ReactNode[] | ReactNode,
   btnText: string,
   onClick: () => void
 }

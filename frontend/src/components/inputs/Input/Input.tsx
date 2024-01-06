@@ -2,10 +2,11 @@ import styles from "./Input.module.css"
 import InputClass from "../../../store/Input";
 import FormsStore from "../../../store/FormsStore";
 
-interface InputProps{
+export interface InputProps{
   placeholder?: string,
   value?: string,
   edit?: InputClass,
+  className?: string
 }
 
 /**
@@ -13,11 +14,11 @@ interface InputProps{
  * @param placeholder placeholder для инпута
  * @param value текст в инпуте
  * @param edit экземпляр класса Input, который редактируется (с которым связан сам инпут)
- * @constructor
+ * @param className className который накладывается на данный компонент
  */
-function Input({placeholder, value, edit}: InputProps) {
+function Input({placeholder, value, edit, className}: InputProps) {
   return (
-    <input type="text" placeholder={placeholder} className={styles.input} value={value} onChange={
+    <input type="text" placeholder={placeholder} className={`${styles.input} ${className}`} value={value} onChange={
       (event) => {
         console.log(FormsStore.getInstance())
         edit?.onChange(event.target.value)

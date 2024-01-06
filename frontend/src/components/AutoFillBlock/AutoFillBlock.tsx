@@ -1,7 +1,8 @@
 import styles from "./AutoFillBlock.module.css"
+import {ReactNode} from "react";
 interface AutoFillBlockInterface{
-  input: any,
-  autoFills: any
+  input: ReactNode,
+  autoFills: ReactNode
 }
 
 /**

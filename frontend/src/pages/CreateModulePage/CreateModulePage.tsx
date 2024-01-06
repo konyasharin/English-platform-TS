@@ -60,7 +60,7 @@ function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
  * @param event event из JS
  * @param input экземпляр класса InputAutoFill, в который мы будем передавать предполагаемые слова
  */
-async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill){
+async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill): Promise<void>{
   if (event.target.value !== ""){
     try {
       await axios.get(`/library/${event.target.value}`, {
@@ -83,7 +83,7 @@ async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputA
   }
 }
 
-async function editTranslate(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill, prev: ClassInputAutoFill){
+async function editTranslate(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill, prev: ClassInputAutoFill | undefined): Promise<void>{
 
 }
 
@@ -166,10 +166,10 @@ const CreateModulePage = observer(() => {
   const inputs = createModuleForm.getAllInputsAutoFill().map((data, i) => {
     if (i % 2 === 0){
       return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
-                            onChange={(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill) => editWord(event, input)}/>
+                            onChange={editWord}/>
     } else{
       return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
-                            onChange={(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill, prev: ClassInputAutoFill) => editTranslate(event, input, prev)}
+                            onChange={editTranslate}
                             prev={createModuleForm.getAllInputsAutoFill()[i - 1]}/>
     }
   })
@@ -230,10 +230,10 @@ const CreateModulePage = observer(() => {
   return (
     <Container>
       <section className={styles.createModule}>
-        <Input placeholder={"Название модуля"} value={nameModule.text} edit={nameModule}/>
+        <Input placeholder={"Название модуля"} value={nameModule.text} edit={nameModule} className={styles.createModuleInput}/>
         {blocks}
         <Add className={styles.moduleAdd} img={PlusBlueImg} onClick={() => {addWord(firstWordInput, firstTranslateInput)}}/>
-        <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"} onClick={onCreateModule}/>
+        <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"} onClick={onCreateModule} className={styles.btn}/>
       </section>
     </Container>
   )

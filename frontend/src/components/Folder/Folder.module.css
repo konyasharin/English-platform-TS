@@ -3,13 +3,13 @@
     padding: 30px 38px 60px 38px;
     background-color: #FFF4E3;
     border-radius: 8px;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
     cursor: pointer;
     flex-direction: column;
     overflow-wrap: anywhere;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .module{

@@ -9,3 +9,13 @@
     display: block;
     width: 100%;
 }
+
+.stylesNavLink{
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.folder{
+    height: 100%;
+}

@@ -1,5 +1,6 @@
 import Container from "../../components/Container/Container";
 import styles from "./CreateFolderPage.module.css"
+import createModulePageStyles from "../CreateModulePage/CreateModulePage.module.css"
 import Input from "../../components/inputs/Input/Input";
 import InputClass from "../../store/Input"
 import AddingModule from "../../components/AddingModule/AddingModule";
@@ -59,16 +60,17 @@ const createFolderForm = FormsStore.getInstance().addForm(FormNames.CREATE_FOLDE
 const folderNameInput = createFolderForm.addInput(new InputClass(InputNames.FOLDER_NAME, "", "Название папки"))
 
 const CreateFolderPage = observer(() => {
-  const addingModuleComponents = new Array<ReactNode>()
-  let i: number
-  for (i = 0; i < ModulesStore.getInstance().modules.length; i++){
-    addingModuleComponents.push(<AddingModule module={ModulesStore.getInstance().modules[i]} key={i}/>)
-  }
+  const addingModuleComponents: ReactNode[] = []
+  ModulesStore.getInstance().modules.forEach((module: Module, i: number) => {
+    addingModuleComponents.push(
+      <AddingModule module={module} key={i}/>
+    )
+  })
 
   return(
     <Container>
-      <section className={styles.createFolder}>
-        <Input placeholder={folderNameInput.placeholder} value={folderNameInput.text} edit={folderNameInput}/>
+      <section>
+        <Input placeholder={folderNameInput.placeholder} value={folderNameInput.text} edit={folderNameInput} className={createModulePageStyles.createModuleInput}/>
         <div className={styles.foldersBlock}>
           {addingModuleComponents}
         </div>
