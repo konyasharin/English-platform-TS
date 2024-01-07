@@ -9,11 +9,14 @@ import Container from "../../components/Container/Container";
 import {ReactNode} from "react";
 import createModuleComponents from "../../components/utils/createModuleComponents";
 import User from "../../store/User";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
 
 /**
  * Компонент содержит страницу с модулями
  */
 const ModulesPage = observer(() => {
+  CheckAuth()
+
   let modules = createModuleComponents(() => {
     ModulesStore.getInstance().currentModule = ""
   }, styles.folder)

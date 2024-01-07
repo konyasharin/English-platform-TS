@@ -12,11 +12,14 @@ class User{
     private _login: string;
     // единственный экземпляр класса User (Singleton)
     private static _instance: User
+    // показывает загружаются ли сейчас данные о пользователя
+    public isLoading: boolean
 
     // конструктор приватный так как мы используем паттерн Singleton для данного класса
     private constructor() {
         makeAutoObservable(this)
         this._login = ""
+        this.isLoading = true // загружаются данные с запуска приложения
     }
 
     /**

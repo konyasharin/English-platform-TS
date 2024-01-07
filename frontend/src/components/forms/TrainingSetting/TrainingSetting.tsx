@@ -3,11 +3,11 @@ import Btn from "../../btns/Btn/Btn";
 import Minus from "../../../assets/icons/minus.png"
 import Plus from "../../../assets/icons/plus.png"
 import {useNavigate} from "react-router-dom";
-import {closeForm} from "../../CheckAuth/CheckAuth";
 import {observer} from "mobx-react-lite";
 import ModulesStore from "../../../store/ModulesStore";
 import LearnTraining from "../../../store/LearnTraining";
 import styles from "./TrainingSetting.module.css"
+import closeForm from "../../../utils/closeForm";
 
 const training: LearnTraining = LearnTraining.getInstance() as LearnTraining
 

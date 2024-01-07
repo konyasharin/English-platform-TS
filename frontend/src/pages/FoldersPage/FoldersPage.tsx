@@ -11,6 +11,7 @@ import {Link} from "react-router-dom";
 import FoldersStore from "../../store/FoldersStore";
 import {ReactNode} from "react";
 import {observer} from "mobx-react-lite";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
 
 function createFolderComponents(){
   const folders = new Array<ReactNode>()
@@ -27,6 +28,7 @@ function createFolderComponents(){
  * Компонент содержит страницу с папками
  */
 const FoldersPage = observer(() => {
+  CheckAuth()
   return(
     <Container>
       <section className={styles.folders}>

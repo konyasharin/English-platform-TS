@@ -1,7 +1,7 @@
 import styles from "./BlackBg.module.css"
-import {closeForm} from "../CheckAuth/CheckAuth";
 import {observer} from "mobx-react-lite";
 import FormsStore from "../../store/FormsStore";
+import closeForm from "../../utils/closeForm";
 
 /**
  * Данный компонент содержит текущую форму из следующих:

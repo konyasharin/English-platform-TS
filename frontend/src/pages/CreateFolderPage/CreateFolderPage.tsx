@@ -12,11 +12,13 @@ import ModulesStore from "../../store/ModulesStore";
 import {ReactNode} from "react";
 import Module from "../../store/Module";
 import createFolder from "../../api/createFolder";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
 
 const createFolderForm = FormsStore.getInstance().addForm(FormNames.CREATE_FOLDER)
 const folderNameInput = createFolderForm.addInput(new InputClass(InputNames.FOLDER_NAME, "", "Название папки"))
 
 const CreateFolderPage = observer(() => {
+  CheckAuth()
   const addingModuleComponents: ReactNode[] = []
   ModulesStore.getInstance().modules.forEach((module: Module, i: number) => {
     addingModuleComponents.push(

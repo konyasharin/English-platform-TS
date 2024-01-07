@@ -4,12 +4,18 @@ import style from "./ProfilePage.module.css"
 import User from "../../store/User";
 import {observer} from "mobx-react-lite";
 import Container from "../../components/Container/Container";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
+
+interface IProfilePageProps{
+  img?: string
+}
 
 /**
  * Компонент содержит страницу профиля
  * @param img путь до аватара пользователя
  */
-const ProfilePage = observer((props: { img: string | undefined; }) =>{
+const ProfilePage = observer((props: IProfilePageProps) =>{
+  CheckAuth()
   return(
     <section className={style.profile}>
       <Container>

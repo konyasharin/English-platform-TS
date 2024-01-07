@@ -1,5 +1,5 @@
-import {closeForm} from "../components/CheckAuth/CheckAuth";
 import axios from "../axios";
+import closeForm from "../utils/closeForm";
 
 /**
  * Метод для завершения регистрации

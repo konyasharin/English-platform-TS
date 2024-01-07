@@ -1,11 +1,14 @@
 import Training from "../../../components/Training/Training";
 import styles from "./TrainingsPage.module.css"
 import Container from "../../../components/Container/Container";
+import CheckAuth from "../../../components/CheckAuth/CheckAuth";
+import {observer} from "mobx-react-lite";
 
 /**
  * Компонент содержит страницу "тренировки"
  */
-function TrainingsPage(){
+const TrainingsPage = observer(() => {
+  CheckAuth()
   return(
     <Container>
       <section className={`container ${styles.trainingsPage}`}>
@@ -19,5 +22,5 @@ function TrainingsPage(){
       </section>
     </Container>
   )
-}
+})
 export default TrainingsPage

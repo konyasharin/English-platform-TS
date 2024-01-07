@@ -1,4 +1,3 @@
-import {openForm} from "../../components/CheckAuth/CheckAuth";
 import {observer} from "mobx-react-lite";
 import FormsStore from "../../store/FormsStore";
 import {FormNames} from "../../initializeForms";
@@ -9,6 +8,8 @@ import styles from "./ChooseModulePage.module.css"
 import Container from "../../components/Container/Container";
 import createModuleComponents from "../../components/utils/createModuleComponents";
 import React from "react";
+import openForm from "../../utils/openForm";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
 
 /**
  * Метод запускает настройку тренировки при выборе модуля
@@ -27,6 +28,7 @@ function onChooseModule(event: React.MouseEvent, moduleName: string){
  * Компонент содержит страницу выбора модуля для тренировки
  */
 const ChooseModulePage = observer(() => {
+  CheckAuth()
   let modules = createModuleComponents(onChooseModule)
 
   return(

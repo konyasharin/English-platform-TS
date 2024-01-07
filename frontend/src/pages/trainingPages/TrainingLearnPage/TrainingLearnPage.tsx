@@ -10,6 +10,7 @@ import InputClass from "../../../store/Input"
 import {InputNames} from "../../../initializeForms";
 import styles from "./TrainingLearnPage.module.css"
 import Container from "../../../components/Container/Container";
+import CheckAuth from "../../../components/CheckAuth/CheckAuth";
 
 const training = LearnTraining.getInstance() as LearnTraining
 let i: number = 0
@@ -20,6 +21,7 @@ const answersInput = new InputClass(InputNames.ANSWER, "", "Перевод")
  * Данный компонент содержит страницу с уже запущенной тренировкой-заучиванием
  */
 const TrainingLearnPage = observer(() => {
+  CheckAuth()
   const navigate = useNavigate()
   useEffect(() => {
     if(ModulesStore.getInstance().currentModule === ""){

@@ -17,18 +17,25 @@ import AvatarImg from "./assets/avatar.png"
 import TrainingLearnPage from "./pages/trainingPages/TrainingLearnPage/TrainingLearnPage";
 import Header from "./components/Header/Header";
 import CreateFolderPage from "./pages/CreateFolderPage/CreateFolderPage";
-import CheckAuth from "./components/CheckAuth/CheckAuth";
 import ModulePage from "./pages/ModulePage/ModulePage";
-
-initializeForms(FormsStore.getInstance()) // Нужно инициализировать не внутри компонента
+import getUserData from "./api/getUserData";
+import {useEffect} from "react";
+import User from "./store/User";
 
 /**
  * Главный компонент приложения
  */
 function App() {
-    CheckAuth()
+    useEffect( () => {
+        (async () => {
+            await getUserData()
+            User.getInstance().isLoading = false
+        })()
+        initializeForms(FormsStore.getInstance())
+    }, [])
     return (
         <div className="App">
+            <OpenAuth/>
             <Header/>
             <ToMain/>
             <main>
@@ -46,7 +53,6 @@ function App() {
                 </Routes>
             </main>
             <Footer/>
-            <OpenAuth/>
         </div>
     )
 }

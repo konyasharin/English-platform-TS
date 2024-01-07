@@ -1,5 +1,6 @@
-import {closeForm} from "../components/CheckAuth/CheckAuth";
 import axios from "../axios";
+import closeForm from "../utils/closeForm";
+import getUserData from "./getUserData";
 
 /**
  * Метод для завершения авторизации (устанавливаем токен для авторизации локально
@@ -19,7 +20,7 @@ async function entry(login: string, password: string){
     })
       .then(response => response.data)
       .then(data => localStorage.setItem("token", data.token))
-    //await tryGetUserData()
+    await getUserData()
     closeForm()
   } catch (error: any){
     alert(error.response.data.message)

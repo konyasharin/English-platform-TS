@@ -16,6 +16,7 @@ import Container from "../../components/Container/Container";
 import styles from "./CreateModulePage.module.css"
 import createModule from "../../api/createModule";
 import editAutoFillWord from "../../api/editAutoFillWord";
+import CheckAuth from "../../components/CheckAuth/CheckAuth";
 
 export interface Word{
   word: string,
@@ -60,6 +61,7 @@ const firstTranslateInput = createModuleForm.addInputAutoFill(
  * Данный компонент содержит страницу для создания модуля
  */
 const CreateModulePage = observer(() => {
+  CheckAuth()
   /**
    * Вытаскиваем из формы все инпуты (не экземпляры класса Input!!! а экземпляры класса InputAutoFill)
    * и на основе данных в этих экземплярах создаем уже функциональные реакт-кмпоненты InputAutoFill
