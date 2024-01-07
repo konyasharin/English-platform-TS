@@ -4,35 +4,7 @@ import {observer} from "mobx-react-lite";
 import FormsStore from "../../../store/FormsStore";
 import {FormNames, InputNames} from "../../../initializeForms";
 import formsStore from "../../../store/FormsStore";
-import axios from "../../../axios";
-import {closeForm} from "../../CheckAuth/CheckAuth";
-
-/**
- * Метод для завершения регистрации
- * @param login логин пользователя
- * @param password пароль пользователя
- * @param repeatPassword повтор пароля
- */
-async function endRegistration(login: string, password: string, repeatPassword: string){
-  if (password === repeatPassword){
-    try {
-      await axios.post("auth/registration", {
-        userName: login,
-        password: password
-      }, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      alert("Регистрация прошла успешна")
-      closeForm()
-    } catch (error: any){
-      alert(error.response.data.message)
-    }
-  } else{
-    alert("Пароли не совпадают!")
-  }
-}
+import registration from "../../../api/registration";
 
 /**
  * Компонент содержит окно регистрации (потом будет передан в форму) и метод для
@@ -53,7 +25,7 @@ const Registration = observer(() => {
 
   return(
     <Form inputs={inputsArray} btnText={"Завершить регистрацию"} title={"Регистрация"} onClick={() => {
-      endRegistration(formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.LOGIN)!.text,
+      registration(formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.LOGIN)!.text,
         formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.PASSWORD)!.text,
         formsStore.getInstance().getForm(FormNames.REGISTRATION)!.getInput(InputNames.REPEAT_PASSWORD)!.text)
     }}/>

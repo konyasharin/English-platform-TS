@@ -2,7 +2,7 @@ import styles from "./ChooseAutoFillBtn.module.css"
 import InputAutoFill from "../../../store/InputAutoFill";
 import axios from "../../../axios";
 import {ChangeEvent} from "react";
-import {WordInterface} from "../../../pages/CreateModulePage/CreateModulePage";
+import {WordInterface} from "../../../api/editAutoFillWord";
 
 interface ChooseAutoFillBtnInterface{
   text: string,

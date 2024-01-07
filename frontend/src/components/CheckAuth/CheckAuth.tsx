@@ -4,14 +4,14 @@ import User from "../../store/User";
 import FormsStore from "../../store/FormsStore"
 import {FormNames} from "../../initializeForms";
 import axios from "../../axios";
-import {ModuleInterface} from "../../pages/CreateModulePage/CreateModulePage";
 import ModulesStore from "../../store/ModulesStore";
 import Module from "../../store/Module";
 import Word from "../../store/Word";
 import blackBgStyles from "../BlackBg/BlackBg.module.css"
-import {FolderInterface} from "../../pages/CreateFolderPage/CreateFolderPage";
 import FoldersStore from "../../store/FoldersStore";
 import Folder from "../../store/Folder";
+import {FolderInterface} from "../../api/createFolder";
+import {ModuleInterface} from "../../api/createModule";
 
 /**
  * Метод для вытягивания информации о пользователе (если присутствует токен авторизации)

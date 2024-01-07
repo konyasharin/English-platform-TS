@@ -8,30 +8,14 @@ import WordAndTranslate from "../../components/WordAndTranslate/WordAndTranslate
 import Btn from "../../components/btns/Btn/Btn";
 import ClassInputAutoFill from "../../store/InputAutoFill";
 import {ChangeEvent} from "react";
-import axios from "../../axios";
 import InputAutoFill from "../../components/inputs/InputAutoFill/InputAutoFill";
 import AutoFillBlock from "../../components/AutoFillBlock/AutoFillBlock";
 import ChooseAutoFillBtn from "../../components/btns/ChooseAutoFillBtn/ChooseAutoFillBtn";
-import User from "../../store/User";
-import ModulesStore from "../../store/ModulesStore";
-import Module from "../../store/Module";
-import ClassWord from "../../store/Word";
 import PlusBlueImg from "../../assets/icons/plus-blue.png"
 import Container from "../../components/Container/Container";
 import styles from "./CreateModulePage.module.css"
-
-export interface WordInterface{
-  _id: string,
-  word: string,
-  translates: Array<string>
-}
-
-export interface ModuleInterface{
-  name: string,
-  words: Array<Word>,
-  _id: string,
-  __v: number
-}
+import createModule from "../../api/createModule";
+import editAutoFillWord from "../../api/editAutoFillWord";
 
 export interface Word{
   word: string,
@@ -53,88 +37,8 @@ function addWord(parent1: ClassInputAutoFill, parent2: ClassInputAutoFill){
   FormsStore.getInstance().getForm(FormNames.CREATE_MODULE)!.addInputAutoFill(newTranslate)
 }
 
-/**
- * Метод для вытаскивания предполагаемо вводимого слова из базы данных
- * и предлагания этих переводов пользователю (добавление к экземпляру класса
- * InputAutoFill в поле autoFills всех предполагаемых слов)
- * @param event event из JS
- * @param input экземпляр класса InputAutoFill, в который мы будем передавать предполагаемые слова
- */
-async function editWord(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill): Promise<void>{
-  if (event.target.value !== ""){
-    try {
-      await axios.get(`/library/${event.target.value}`, {
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-        .then(response => response.data)
-        .then(data => {
-          input.cleanAutoFills()
-          data.words.forEach((word: WordInterface) => {
-            input.addAutoFill(word.word)
-          })
-        })
-    } catch (error){
-      console.log(error)
-    }
-  } else{
-    input.cleanAutoFills()
-  }
-}
-
 async function editTranslate(event: ChangeEvent<HTMLInputElement>, input: ClassInputAutoFill, prev: ClassInputAutoFill | undefined): Promise<void>{
 
-}
-
-/**
- * Метод для проверки формы по созданию модуля на введенные значения и создание модуля в базе данных
- */
-async function onCreateModule(){
-  if(createModuleForm.checkRepeatAutoFillInputs()){
-    alert("Ошибка! Есть повторяющиеся поля")
-  } else if(createModuleForm.getAllInputsAutoFill().length < 2) {
-    alert("Ошибка! Нужно создать хотя бы одно слово")
-  } else if(createModuleForm.checkEmptyAutoFillInputs()){
-    alert("Ошибка! Есть незаполненные поля")
-  } else if(createModuleForm.getInput(InputNames.MODULE_NAME)!.text === ""){
-    alert("Ошибка! Введите название модуля")
-  } else{
-    let i: number
-    let words: Array<object> = []
-
-    for(i = 0; i < createModuleForm.getAllInputsAutoFill().length; i += 2){
-      words.push({
-        word: createModuleForm.getAllInputsAutoFill()[i].text,
-        translate: createModuleForm.getAllInputsAutoFill()[i + 1].text
-      })
-    }
-
-    try{
-      await axios.post(`modules/create`, {
-        userName: User.getInstance().login,
-        name: createModuleForm.getInput(InputNames.MODULE_NAME)!.text,
-        words: words
-      })
-        .then(response => response.data)
-        .then((data: ModuleInterface)  => {
-          // Добавляем созданный модуль в стор ко всем модулям пользователя
-          let words: Array<ClassWord> = []
-          data.words.forEach(word => {
-            words.push(new ClassWord(word.word, word.translate))
-          })
-          ModulesStore.getInstance().addModule(new Module(data.name, words))
-
-          createModuleForm.cleanAllForm()
-          createModuleForm.deleteAllAutoFillInputs()
-          createModuleForm.addInputAutoFill(firstWordInput)
-          createModuleForm.addInputAutoFill(firstTranslateInput)
-          alert("Модуль успешно создан!")
-        })
-    } catch (error){
-      console.log(error)
-    }
-  }
 }
 
 /**
@@ -166,7 +70,7 @@ const CreateModulePage = observer(() => {
   const inputs = createModuleForm.getAllInputsAutoFill().map((data, i) => {
     if (i % 2 === 0){
       return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
-                            onChange={editWord}/>
+                            onChange={editAutoFillWord}/>
     } else{
       return <InputAutoFill placeholder={data.placeholder} value={data.text} edit={data} key={i}
                             onChange={editTranslate}
@@ -233,7 +137,7 @@ const CreateModulePage = observer(() => {
         <Input placeholder={"Название модуля"} value={nameModule.text} edit={nameModule} className={styles.createModuleInput}/>
         {blocks}
         <Add className={styles.moduleAdd} img={PlusBlueImg} onClick={() => {addWord(firstWordInput, firstTranslateInput)}}/>
-        <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"} onClick={onCreateModule} className={styles.btn}/>
+        <Btn text={"Создать модуль"} backgroundColor={"#4D4DFF"} color={"#ffffff"} onClick={() => createModule(createModuleForm)} className={styles.btn}/>
       </section>
     </Container>
   )

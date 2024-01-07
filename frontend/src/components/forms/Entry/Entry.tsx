@@ -3,34 +3,8 @@ import Form from "../Form/Form";
 import FormsStore from "../../../store/FormsStore";
 import {FormNames, InputNames} from "../../../initializeForms";
 import {observer} from "mobx-react-lite";
-import axios from "../../../axios";
 import formsStore from "../../../store/FormsStore";
-import {closeForm} from "../../CheckAuth/CheckAuth";
-
-/**
- * Метод для завершения авторизации (устанавливаем токен для авторизации локально
- * у пользователя и закрываем форму(если авторизация прошла успешно))
- * @param login логин пользователя
- * @param password пароль пользователя
- */
-async function endEntry(login: string, password: string){
-  try {
-    await axios.post("auth/login", {
-      userName: login,
-      password: password
-    }, {
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-      .then(response => response.data)
-      .then(data => localStorage.setItem("token", data.token))
-    //await tryGetUserData()
-    closeForm()
-  } catch (error: any){
-    alert(error.response.data.message)
-  }
-}
+import entry from "../../../api/entry";
 
 /**
  * Компонент, содержащий окно входа (потом будет передано в форму),
@@ -48,7 +22,7 @@ const Entry = observer(() => {
 
   return(
     <Form inputs={inputsArray} btnText={"Войти"} title={"Вход"} onClick={() => {
-      endEntry(formsStore.getInstance().getForm(FormNames.ENTRY)!.getInput(InputNames.LOGIN)!.text,
+      entry(formsStore.getInstance().getForm(FormNames.ENTRY)!.getInput(InputNames.LOGIN)!.text,
         formsStore.getInstance().getForm(FormNames.ENTRY)!.getInput(InputNames.PASSWORD)!.text)
     }}/>
   )

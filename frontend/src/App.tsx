@@ -42,7 +42,7 @@ function App() {
                     <Route path="/trainings/learn/chooseModule" element={<ChooseModulePage/>}/>
                     <Route path="/trainings/learn/training" element={<TrainingLearnPage/>}/>
                     <Route path="/createFolder" element={<CreateFolderPage/>}/>
-                    <Route path="/module" element={<ModulePage/>}/>
+                    <Route path="/modules/:userName/:moduleName" element={<ModulePage/>}/>
                 </Routes>
             </main>
             <Footer/>

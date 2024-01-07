@@ -20,7 +20,7 @@ const ModulesPage = observer(() => {
 
   modules = modules.map((module: ReactNode, i: number) => {
     return(
-      <NavLink to={`/modules/${User.getInstance().login}/${ModulesStore.getInstance().modules[i].name}`} className={styles.stylesNavLink}>
+      <NavLink to={`/modules/${User.getInstance().login}/${ModulesStore.getInstance().modules[i].name}`} className={styles.stylesNavLink} key={i}>
         {module}
       </NavLink>
     )
